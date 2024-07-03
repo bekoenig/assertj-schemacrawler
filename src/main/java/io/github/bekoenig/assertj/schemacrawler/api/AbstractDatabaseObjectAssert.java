@@ -1,0 +1,23 @@
+package io.github.bekoenig.assertj.schemacrawler.api;
+
+import schemacrawler.schema.DatabaseObject;
+import schemacrawler.schema.Schema;
+
+import java.util.function.Consumer;
+
+public abstract class AbstractDatabaseObjectAssert<
+        SELF extends AbstractDatabaseObjectAssert<SELF, ACTUAL>,
+        ACTUAL extends DatabaseObject>
+        extends AbstractNamedObjectWithAttributesAssert<SELF, ACTUAL> {
+
+    protected AbstractDatabaseObjectAssert(ACTUAL actual, Class<?> selfType) {
+        super(actual, selfType);
+    }
+
+    @SafeVarargs
+    public final SELF satisfiesSchema(Consumer<Schema>... requirements) {
+        extracting(DatabaseObject::getSchema).satisfies(requirements);
+        return myself;
+    }
+
+}

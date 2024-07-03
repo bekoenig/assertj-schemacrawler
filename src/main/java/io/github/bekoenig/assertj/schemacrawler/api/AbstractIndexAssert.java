@@ -1,0 +1,59 @@
+package io.github.bekoenig.assertj.schemacrawler.api;
+
+import org.assertj.core.api.ClassBasedNavigableListAssert;
+import schemacrawler.schema.*;
+
+import java.util.List;
+import java.util.function.Predicate;
+
+public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>>
+        extends AbstractDependantObjectAssert<SELF, Index, Table> {
+
+    protected AbstractIndexAssert(Index indexColumns, Class<?> selfType) {
+        super(indexColumns, selfType);
+    }
+
+    public SELF matchesCardinality(Predicate<Long> predicate) {
+        extracting(Index::getCardinality).matches(predicate);
+        return myself;
+    }
+
+    public ClassBasedNavigableListAssert<?, List<? extends IndexColumn>, IndexColumn, IndexColumnAssert> columns() {
+        return new ClassBasedNavigableListAssert<>(actual.getColumns(), IndexColumnAssert.class);
+    }
+
+    public SELF matchesDefinition(Predicate<String> predicate) {
+        extracting(DefinedObject::getDefinition).matches(predicate);
+        return myself;
+    }
+
+    public SELF hasIndexType(IndexType indexType) {
+        extracting(Index::getIndexType).isEqualTo(indexType);
+        return myself;
+    }
+
+    public SELF matchesPages(Predicate<Long> predicate) {
+        extracting(Index::getPages).matches(predicate);
+        return myself;
+    }
+
+    public SELF hasType(IndexType indexType) {
+        extracting(TypedObject::getType).isEqualTo(indexType);
+        return myself;
+    }
+
+    public SELF hasDefinition(boolean expected) {
+        return returns(expected, DefinedObject::hasDefinition);
+    }
+
+    public SELF isUnique(boolean expected) {
+        return returns(expected, Index::isUnique);
+    }
+
+    public IndexColumnAssert column(String name) {
+        return extracting(x -> x.lookupColumn(name)
+                .orElse(null))
+                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.indexColumn());
+    }
+
+}
