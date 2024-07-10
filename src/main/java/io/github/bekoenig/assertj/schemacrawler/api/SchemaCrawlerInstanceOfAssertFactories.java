@@ -22,6 +22,12 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
         return new InstanceOfAssertFactory<>(ForeignKey.class, SchemaCrawlerAssertions::assertThat);
     }
 
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    static <D extends DatabaseObject> InstanceOfAssertFactory<Grant, GrantAssert<D>> grant(Class<D> databaseObjectType) {
+        return new InstanceOfAssertFactory<>(Grant.class, new Class[]{databaseObjectType},
+                actual -> SchemaCrawlerAssertions.assertThat(actual, databaseObjectType));
+    }
+
     static InstanceOfAssertFactory<Index, IndexAssert> index() {
         return new InstanceOfAssertFactory<>(Index.class, SchemaCrawlerAssertions::assertThat);
     }
@@ -35,8 +41,8 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
     }
 
     @SuppressWarnings("rawtypes")
-    static <D extends DatabaseObject> InstanceOfAssertFactory<Privilege, PrivilegeAssert<D>> privilege(Class<D> type) {
-        return new InstanceOfAssertFactory<>(Privilege.class, new Class[]{type}, SchemaCrawlerAssertions::<D>assertThat);
+    static <D extends DatabaseObject> InstanceOfAssertFactory<Privilege, PrivilegeAssert<D>> privilege(Class<D> databaseObjectType) {
+        return new InstanceOfAssertFactory<>(Privilege.class, new Class[]{databaseObjectType}, SchemaCrawlerAssertions::<D>assertThat);
     }
 
     static InstanceOfAssertFactory<Routine, RoutineAssert> routine() {

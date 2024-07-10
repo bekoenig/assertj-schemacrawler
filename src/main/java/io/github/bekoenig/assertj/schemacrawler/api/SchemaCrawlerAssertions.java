@@ -21,6 +21,10 @@ public class SchemaCrawlerAssertions {
         return new ForeignKeyAssert(actual);
     }
 
+    public static <D extends DatabaseObject> GrantAssert<D> assertThat(Grant<D> actual, Class<D> databaseObjectType) {
+        return new GrantAssert<>(actual, databaseObjectType);
+    }
+
     public static IndexAssert assertThat(Index actual) {
         return new IndexAssert(actual);
     }

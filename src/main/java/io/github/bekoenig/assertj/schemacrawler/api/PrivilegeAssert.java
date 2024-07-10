@@ -7,7 +7,7 @@ public class PrivilegeAssert<D extends DatabaseObject>
         extends AbstractPrivilegeAssert<PrivilegeAssert<D>, Privilege<D>, D> {
 
     public PrivilegeAssert(Privilege<D> actual) {
-        super(actual, Privilege.class);
+        super(actual, PrivilegeAssert.class);
     }
 
 }
