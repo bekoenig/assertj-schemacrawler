@@ -41,6 +41,10 @@ public class SchemaCrawlerAssertions {
         return new PrivilegeAssert<>(actual);
     }
 
+    public static <R extends Routine> RoutineParameterAssert<R> assertThat(RoutineParameter<R> actual) {
+        return new RoutineParameterAssert<>(actual);
+    }
+
     public static RoutineAssert assertThat(Routine actual) {
         return new RoutineAssert(actual);
     }

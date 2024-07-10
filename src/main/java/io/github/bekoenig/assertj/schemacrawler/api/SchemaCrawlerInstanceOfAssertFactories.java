@@ -45,6 +45,11 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
         return new InstanceOfAssertFactory<>(Privilege.class, new Class[]{databaseObjectType}, SchemaCrawlerAssertions::<D>assertThat);
     }
 
+    @SuppressWarnings("rawtypes")
+    static <R extends Routine> InstanceOfAssertFactory<RoutineParameter, RoutineParameterAssert<R>> routineParameter() {
+        return new InstanceOfAssertFactory<>(RoutineParameter.class, SchemaCrawlerAssertions::<R>assertThat);
+    }
+
     static InstanceOfAssertFactory<Routine, RoutineAssert> routine() {
         return new InstanceOfAssertFactory<>(Routine.class, SchemaCrawlerAssertions::assertThat);
     }
