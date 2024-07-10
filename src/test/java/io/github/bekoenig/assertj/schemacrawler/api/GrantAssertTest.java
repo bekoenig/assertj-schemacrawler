@@ -19,7 +19,7 @@ class GrantAssertTest {
         Class<Column> databaseTypeObject = Column.class;
 
         // WHEN
-        GrantAssert<Column> grantAssert = new GrantAssert<>(actual, databaseTypeObject);
+        GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
 
         // THEN
         grantAssert.hasGrantee("someone");
@@ -33,7 +33,7 @@ class GrantAssertTest {
         Class<Column> databaseTypeObject = Column.class;
 
         // WHEN
-        GrantAssert<Column> grantAssert = new GrantAssert<>(actual, databaseTypeObject);
+        GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
 
         // THEN
         grantAssert.hasGrantor("someone");
@@ -47,7 +47,7 @@ class GrantAssertTest {
         Class<Column> databaseTypeObject = Column.class;
 
         // WHEN
-        GrantAssert<Column> grantAssert = new GrantAssert<>(actual, databaseTypeObject);
+        GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
 
         // THEN
         grantAssert.isGrantable(true);
@@ -62,7 +62,7 @@ class GrantAssertTest {
         Class<Column> databaseTypeObject = Column.class;
 
         // WHEN
-        GrantAssert<Column> grantAssert = new GrantAssert<>(actual, databaseTypeObject);
+        GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
 
         // THEN
         grantAssert.parent().isEqualTo(privilege);

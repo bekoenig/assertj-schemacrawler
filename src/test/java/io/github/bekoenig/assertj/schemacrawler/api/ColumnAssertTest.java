@@ -19,7 +19,7 @@ class ColumnAssertTest {
         when(columnDataType.getName()).thenReturn("MY_TYPE");
 
         // WHEN
-        ColumnAssert columnAssert = new ColumnAssert(column);
+        ColumnAssert columnAssert = SchemaCrawlerAssertions.assertThat(column);
 
         // THEN
         columnAssert.matchesColumnDataTypeName(x -> x.startsWith("MY_"));
@@ -31,7 +31,7 @@ class ColumnAssertTest {
         Column column = null;
 
         // WHEN
-        ColumnAssert columnAssert = new ColumnAssert(column);
+        ColumnAssert columnAssert = SchemaCrawlerAssertions.assertThat(column);
 
         // THEN
         Assertions.assertThatThrownBy(() -> columnAssert.matchesColumnDataTypeName("MY_"::startsWith))
@@ -47,7 +47,7 @@ class ColumnAssertTest {
         when(column.getColumnDataType()).thenReturn(null);
 
         // WHEN
-        ColumnAssert columnAssert = new ColumnAssert(column);
+        ColumnAssert columnAssert = SchemaCrawlerAssertions.assertThat(column);
 
         // THEN
         Assertions.assertThatThrownBy(() -> columnAssert.matchesColumnDataTypeName("MY_"::startsWith))
