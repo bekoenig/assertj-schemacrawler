@@ -4,6 +4,8 @@ import org.assertj.core.api.AbstractObjectAssert;
 import schemacrawler.schema.DatabaseObject;
 import schemacrawler.schema.Grant;
 
+import java.util.function.Predicate;
+
 public class AbstractGrantAssert<
         SELF extends AbstractGrantAssert<SELF, D>,
         D extends DatabaseObject>
@@ -16,13 +18,13 @@ public class AbstractGrantAssert<
         this.databaseObjectType = databaseObjectType;
     }
 
-    public SELF hasGrantee(String expected) {
-        extracting(Grant::getGrantee).isEqualTo(expected);
+    public SELF matchesGrantee(Predicate<String> predicate) {
+        extracting(Grant::getGrantee).matches(predicate);
         return myself;
     }
 
-    public SELF hasGrantor(String expected) {
-        extracting(Grant::getGrantor).isEqualTo(expected);
+    public SELF matchesGrantor(Predicate<String> predicate) {
+        extracting(Grant::getGrantor).matches(predicate);
         return myself;
     }
 

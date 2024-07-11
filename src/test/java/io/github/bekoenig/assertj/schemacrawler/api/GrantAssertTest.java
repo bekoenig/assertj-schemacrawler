@@ -5,6 +5,8 @@ import schemacrawler.schema.Column;
 import schemacrawler.schema.Grant;
 import schemacrawler.schema.Privilege;
 
+import java.util.function.Predicate;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -22,7 +24,7 @@ class GrantAssertTest {
         GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
 
         // THEN
-        grantAssert.hasGrantee("someone");
+        grantAssert.matchesGrantee(Predicate.isEqual("someone"));
     }
 
     @Test
@@ -36,7 +38,7 @@ class GrantAssertTest {
         GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
 
         // THEN
-        grantAssert.hasGrantor("someone");
+        grantAssert.matchesGrantor(Predicate.isEqual("someone"));
     }
 
     @Test
