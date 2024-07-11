@@ -18,6 +18,10 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
         return new InstanceOfAssertFactory<>(ColumnDataType.class, SchemaCrawlerAssertions::assertThat);
     }
 
+    static InstanceOfAssertFactory<ColumnReference, ColumnReferenceAssert> columnReferenceAssert() {
+        return new InstanceOfAssertFactory<>(ColumnReference.class, SchemaCrawlerAssertions::assertThat);
+    }
+
     static InstanceOfAssertFactory<ForeignKey, ForeignKeyAssert> foreignKey() {
         return new InstanceOfAssertFactory<>(ForeignKey.class, SchemaCrawlerAssertions::assertThat);
     }

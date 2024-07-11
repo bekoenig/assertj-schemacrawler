@@ -17,6 +17,10 @@ public class SchemaCrawlerAssertions {
         return new ColumnDataTypeAssert(actual);
     }
 
+    public static ColumnReferenceAssert assertThat(ColumnReference actual) {
+        return new ColumnReferenceAssert(actual);
+    }
+
     public static ForeignKeyAssert assertThat(ForeignKey actual) {
         return new ForeignKeyAssert(actual);
     }
