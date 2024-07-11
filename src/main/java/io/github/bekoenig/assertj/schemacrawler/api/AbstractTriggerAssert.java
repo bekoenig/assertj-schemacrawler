@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 public class AbstractTriggerAssert<SELF extends AbstractTriggerAssert<SELF>>
-        extends AbstractDependantObjectAssert<SELF, Trigger, Table> {
+        extends AbstractDependantObjectAssert<SELF, Trigger> {
 
     protected AbstractTriggerAssert(Trigger actual, Class<?> selfType) {
         super(actual, selfType);

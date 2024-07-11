@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 public abstract class AbstractKeyColumnAssert<
         SELF extends AbstractKeyColumnAssert<SELF, ACTUAL>,
         ACTUAL extends Column>
-        extends AbstractDependantObjectAssert<SELF, ACTUAL, Table> {
+        extends AbstractDependantObjectAssert<SELF, ACTUAL> {
 
     protected AbstractKeyColumnAssert(ACTUAL actual, Class<?> selfType) {
         super(actual, selfType);
@@ -36,7 +36,7 @@ public abstract class AbstractKeyColumnAssert<
         return myself;
     }
 
-    public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<Column>>, Privilege<Column>, PrivilegeAssert<Column>> privileges() {
+    public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
                 actual.getPrivileges(),
@@ -101,9 +101,9 @@ public abstract class AbstractKeyColumnAssert<
         return returns(expected, Column::isPartOfUniqueIndex);
     }
 
-    public PrivilegeAssert<? extends Column> privilege(String name) {
+    public PrivilegeAssert privilege(String name) {
         return extracting(x -> x.lookupPrivilege(name))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.privilege(Column.class));
+                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.privilege());
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>>
-        extends AbstractDependantObjectAssert<SELF, Index, Table> {
+        extends AbstractDependantObjectAssert<SELF, Index> {
 
     protected AbstractIndexAssert(Index indexColumns, Class<?> selfType) {
         super(indexColumns, selfType);

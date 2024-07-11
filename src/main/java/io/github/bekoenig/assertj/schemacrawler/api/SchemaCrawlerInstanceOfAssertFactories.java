@@ -26,10 +26,9 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
         return new InstanceOfAssertFactory<>(ForeignKey.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    static <D extends DatabaseObject> InstanceOfAssertFactory<Grant, GrantAssert<D>> grant(Class<D> databaseObjectType) {
-        return new InstanceOfAssertFactory<>(Grant.class, new Class[]{databaseObjectType},
-                actual -> SchemaCrawlerAssertions.assertThat(actual, databaseObjectType));
+    @SuppressWarnings("rawtypes")
+    static InstanceOfAssertFactory<Grant, GrantAssert> grant() {
+        return new InstanceOfAssertFactory<>(Grant.class, SchemaCrawlerAssertions::assertThat);
     }
 
     static InstanceOfAssertFactory<Index, IndexAssert> index() {
@@ -45,8 +44,8 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
     }
 
     @SuppressWarnings("rawtypes")
-    static <D extends DatabaseObject> InstanceOfAssertFactory<Privilege, PrivilegeAssert<D>> privilege(Class<D> databaseObjectType) {
-        return new InstanceOfAssertFactory<>(Privilege.class, new Class[]{databaseObjectType}, SchemaCrawlerAssertions::<D>assertThat);
+    static InstanceOfAssertFactory<Privilege, PrivilegeAssert> privilege() {
+        return new InstanceOfAssertFactory<>(Privilege.class, SchemaCrawlerAssertions::assertThat);
     }
 
     static InstanceOfAssertFactory<Routine, RoutineAssert> routine() {
@@ -54,8 +53,8 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
     }
 
     @SuppressWarnings("rawtypes")
-    static <R extends Routine> InstanceOfAssertFactory<RoutineParameter, RoutineParameterAssert<R>> routineParameter() {
-        return new InstanceOfAssertFactory<>(RoutineParameter.class, SchemaCrawlerAssertions::<R>assertThat);
+    static InstanceOfAssertFactory<RoutineParameter, RoutineParameterAssert> routineParameter() {
+        return new InstanceOfAssertFactory<>(RoutineParameter.class, SchemaCrawlerAssertions::assertThat);
     }
 
     static InstanceOfAssertFactory<Schema, SchemaAssert> schema() {

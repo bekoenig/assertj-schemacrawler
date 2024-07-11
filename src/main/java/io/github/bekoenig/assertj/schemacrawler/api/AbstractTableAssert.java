@@ -76,7 +76,7 @@ public abstract class AbstractTableAssert<
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.primaryKey());
     }
 
-    public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<Table>>, Privilege<Table>, PrivilegeAssert<Table>> privileges() {
+    public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
                 actual.getPrivileges(),
@@ -160,10 +160,10 @@ public abstract class AbstractTableAssert<
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.index());
     }
 
-    public PrivilegeAssert<? extends Table> privilege(String name) {
+    public PrivilegeAssert privilege(String name) {
         return extracting(x -> x.lookupPrivilege(name)
                 .orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.privilege(Table.class));
+                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.privilege());
     }
 
     public TableConstraintAssert tableConstraint(String name) {

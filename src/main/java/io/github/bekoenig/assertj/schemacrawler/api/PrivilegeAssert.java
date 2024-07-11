@@ -3,10 +3,10 @@ package io.github.bekoenig.assertj.schemacrawler.api;
 import schemacrawler.schema.DatabaseObject;
 import schemacrawler.schema.Privilege;
 
-public class PrivilegeAssert<D extends DatabaseObject>
-        extends AbstractPrivilegeAssert<PrivilegeAssert<D>, Privilege<D>, D> {
+public class PrivilegeAssert
+        extends AbstractPrivilegeAssert<PrivilegeAssert, Privilege<?>> {
 
-    public PrivilegeAssert(Privilege<D> actual) {
+    public PrivilegeAssert(Privilege<?> actual) {
         super(actual, PrivilegeAssert.class);
     }
 

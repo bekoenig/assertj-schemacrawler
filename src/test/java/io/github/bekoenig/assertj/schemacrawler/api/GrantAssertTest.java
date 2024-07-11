@@ -3,7 +3,6 @@ package io.github.bekoenig.assertj.schemacrawler.api;
 import org.junit.jupiter.api.Test;
 import schemacrawler.schema.Column;
 import schemacrawler.schema.Grant;
-import schemacrawler.schema.Privilege;
 
 import java.util.function.Predicate;
 
@@ -21,7 +20,7 @@ class GrantAssertTest {
         Class<Column> databaseTypeObject = Column.class;
 
         // WHEN
-        GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
+        GrantAssert grantAssert = SchemaCrawlerAssertions.assertThat(actual);
 
         // THEN
         grantAssert.matchesGrantee(Predicate.isEqual("someone"));
@@ -35,7 +34,7 @@ class GrantAssertTest {
         Class<Column> databaseTypeObject = Column.class;
 
         // WHEN
-        GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
+        GrantAssert grantAssert = SchemaCrawlerAssertions.assertThat(actual);
 
         // THEN
         grantAssert.matchesGrantor(Predicate.isEqual("someone"));
@@ -49,25 +48,10 @@ class GrantAssertTest {
         Class<Column> databaseTypeObject = Column.class;
 
         // WHEN
-        GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
+        GrantAssert grantAssert = SchemaCrawlerAssertions.assertThat(actual);
 
         // THEN
         grantAssert.isGrantable(true);
-    }
-
-    @Test
-    void parent() {
-        // GIVEN
-        Grant<Column> actual = mock(Grant.class);
-        Privilege<Column> privilege = mock(Privilege.class);
-        when(actual.getParent()).thenReturn(privilege);
-        Class<Column> databaseTypeObject = Column.class;
-
-        // WHEN
-        GrantAssert<Column> grantAssert = SchemaCrawlerAssertions.assertThat(actual, databaseTypeObject);
-
-        // THEN
-        grantAssert.parent().isEqualTo(privilege);
     }
 
 }

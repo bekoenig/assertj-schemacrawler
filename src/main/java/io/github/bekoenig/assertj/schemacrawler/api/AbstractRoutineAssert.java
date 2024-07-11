@@ -16,7 +16,7 @@ public class AbstractRoutineAssert<
     }
 
 
-    public <R extends Routine> FactoryBasedNavigableIterableAssert<?, List<RoutineParameter<R>>, RoutineParameter<R>, RoutineParameterAssert<R>> parameters() {
+    public FactoryBasedNavigableIterableAssert<?, List<RoutineParameter<?>>, RoutineParameter<?>, RoutineParameterAssert> parameters() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
                 actual.getParameters(),
@@ -43,7 +43,7 @@ public class AbstractRoutineAssert<
         return myself;
     }
 
-    public RoutineParameterAssert<?> parameter(String name) {
+    public RoutineParameterAssert parameter(String name) {
         return extracting(x -> x.lookupParameter(name)
                 .orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.routineParameter());

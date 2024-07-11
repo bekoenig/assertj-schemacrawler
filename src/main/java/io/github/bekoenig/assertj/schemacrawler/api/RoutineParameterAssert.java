@@ -1,11 +1,10 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import schemacrawler.schema.Routine;
 import schemacrawler.schema.RoutineParameter;
 
-public class RoutineParameterAssert<R extends Routine> extends AbstractRoutineParameterAssert<RoutineParameterAssert<R>, RoutineParameter<R>, R> {
+public class RoutineParameterAssert extends AbstractRoutineParameterAssert<RoutineParameterAssert, RoutineParameter<?>> {
 
-    public RoutineParameterAssert(RoutineParameter<R> actual) {
+    public RoutineParameterAssert(RoutineParameter<?> actual) {
         super(actual, RoutineParameterAssert.class);
     }
 

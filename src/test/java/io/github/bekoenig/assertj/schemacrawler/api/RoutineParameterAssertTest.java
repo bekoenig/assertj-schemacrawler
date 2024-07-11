@@ -20,7 +20,7 @@ class RoutineParameterAssertTest {
         when(routineParameter.getParameterMode()).thenReturn(ParameterModeType.unknown);
 
         // WHEN
-        RoutineParameterAssert<Routine> routineParameterAssert = SchemaCrawlerAssertions.assertThat(routineParameter);
+        RoutineParameterAssert routineParameterAssert = SchemaCrawlerAssertions.assertThat(routineParameter);
 
         // THEN
         routineParameterAssert.hasParameterMode(ParameterModeType.unknown);
@@ -33,7 +33,7 @@ class RoutineParameterAssertTest {
         when(routineParameter.getPrecision()).thenReturn(7);
 
         // WHEN
-        RoutineParameterAssert<Routine> routineParameterAssert = SchemaCrawlerAssertions.assertThat(routineParameter);
+        RoutineParameterAssert routineParameterAssert = SchemaCrawlerAssertions.assertThat(routineParameter);
 
         // THEN
         routineParameterAssert.matchesPrecision(Predicate.isEqual(7));

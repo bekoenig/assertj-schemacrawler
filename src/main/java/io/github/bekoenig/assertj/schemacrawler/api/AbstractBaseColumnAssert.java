@@ -2,16 +2,14 @@ package io.github.bekoenig.assertj.schemacrawler.api;
 
 import schemacrawler.schema.BaseColumn;
 import schemacrawler.schema.ColumnDataType;
-import schemacrawler.schema.DatabaseObject;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public abstract class AbstractBaseColumnAssert<
-        SELF extends AbstractBaseColumnAssert<SELF, ACTUAL, P>,
-        ACTUAL extends BaseColumn<P>,
-        P extends DatabaseObject>
-        extends AbstractDependantObjectAssert<SELF, ACTUAL, P> {
+        SELF extends AbstractBaseColumnAssert<SELF, ACTUAL>,
+        ACTUAL extends BaseColumn<?>>
+        extends AbstractDependantObjectAssert<SELF, ACTUAL> {
 
     protected AbstractBaseColumnAssert(ACTUAL actual, Class<?> selfType) {
         super(actual, selfType);

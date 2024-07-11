@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SELF>>
-        extends AbstractBaseColumnAssert<SELF, Column, Table> {
+        extends AbstractBaseColumnAssert<SELF, Column> {
 
     protected AbstractColumnAssert(Column actual, Class<?> selfType) {
         super(actual, selfType);
@@ -21,7 +21,7 @@ public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SEL
         return myself;
     }
 
-    public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<Column>>, Privilege<Column>, PrivilegeAssert<Column>> privileges() {
+    public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
                 actual.getPrivileges(),
