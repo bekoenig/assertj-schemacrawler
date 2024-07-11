@@ -1,13 +1,12 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.ListAssert;
+import org.assertj.core.api.FactoryBasedNavigableListAssert;
 import schemacrawler.schema.ColumnReference;
 import schemacrawler.schema.Table;
 import schemacrawler.schema.TableReference;
 
+import java.util.List;
 import java.util.function.Consumer;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public abstract class AbstractTableReferenceAssert<
         SELF extends AbstractTableConstraintAssert<SELF, ACTUAL>,
@@ -18,8 +17,8 @@ public abstract class AbstractTableReferenceAssert<
         super(actual, selfType);
     }
 
-    public ListAssert<ColumnReference> columnReferences() {
-        return assertThat(actual.getColumnReferences());
+    public FactoryBasedNavigableListAssert<?, List<ColumnReference>, ColumnReference, ColumnReferenceAssert> columnReferences() {
+        return new FactoryBasedNavigableListAssert<>(actual.getColumnReferences(), FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     @SafeVarargs
