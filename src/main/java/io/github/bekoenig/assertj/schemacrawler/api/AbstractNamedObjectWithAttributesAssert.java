@@ -29,10 +29,6 @@ public abstract class AbstractNamedObjectWithAttributesAssert<
         return myself;
     }
 
-    public SELF hasRemarks(String remarks) {
-        return matchesRemarks(Predicate.isEqual(remarks));
-    }
-
     public SELF hasAttribute(String name) {
         return returns(true, x -> x.getAttribute(name));
     }
