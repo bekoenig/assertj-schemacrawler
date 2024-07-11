@@ -23,18 +23,18 @@ public class AbstractRoutineAssert<
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public SELF hasReturnType(RoutineReturnType routineReturnType) {
-        extracting(Routine::getReturnType).isEqualTo(routineReturnType);
+    public SELF hasReturnType(RoutineReturnType expected) {
+        extracting(Routine::getReturnType).isEqualTo(expected);
         return myself;
     }
 
-    public SELF hasRoutineBodyType(RoutineBodyType routineBodyType) {
-        extracting(Routine::getRoutineBodyType).isEqualTo(routineBodyType);
+    public SELF hasRoutineBodyType(RoutineBodyType expected) {
+        extracting(Routine::getRoutineBodyType).isEqualTo(expected);
         return myself;
     }
 
-    public SELF hasRoutineType(RoutineType routineType) {
-        extracting(Routine::getRoutineType).isEqualTo(routineType);
+    public SELF hasRoutineType(RoutineType expected) {
+        extracting(Routine::getRoutineType).isEqualTo(expected);
         return myself;
     }
 

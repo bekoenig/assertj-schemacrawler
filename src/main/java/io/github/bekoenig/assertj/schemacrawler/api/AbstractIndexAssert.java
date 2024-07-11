@@ -30,8 +30,8 @@ public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>
         return myself;
     }
 
-    public SELF hasIndexType(IndexType indexType) {
-        extracting(Index::getIndexType).isEqualTo(indexType);
+    public SELF hasIndexType(IndexType expected) {
+        extracting(Index::getIndexType).isEqualTo(expected);
         return myself;
     }
 
@@ -40,8 +40,8 @@ public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>
         return myself;
     }
 
-    public SELF hasType(IndexType indexType) {
-        extracting(TypedObject::getType).isEqualTo(indexType);
+    public SELF hasType(IndexType expected) {
+        extracting(TypedObject::getType).isEqualTo(expected);
         return myself;
     }
 

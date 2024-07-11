@@ -36,8 +36,8 @@ public abstract class AbstractTableConstraintAssert<
         return myself;
     }
 
-    public SELF hasType(TableConstraintType tableConstraintType) {
-        extracting(TableConstraint::getType).isEqualTo(tableConstraintType);
+    public SELF hasType(TableConstraintType expected) {
+        extracting(TableConstraint::getType).isEqualTo(expected);
         return myself;
     }
 
