@@ -1,6 +1,6 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.ClassBasedNavigableIterableAssert;
+import org.assertj.core.api.FactoryBasedNavigableIterableAssert;
 import schemacrawler.schema.CheckOptionType;
 import schemacrawler.schema.Table;
 import schemacrawler.schema.View;
@@ -21,10 +21,10 @@ public abstract class AbstractViewAssert<SELF extends AbstractViewAssert<SELF>>
         return myself;
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> tableUsage() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> tableUsage() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getTableUsage(), ClassBasedNavigableIterableAssert.class,
-                TableAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getTableUsage(), FactoryBasedNavigableIterableAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF isUpdatable(boolean expected) {

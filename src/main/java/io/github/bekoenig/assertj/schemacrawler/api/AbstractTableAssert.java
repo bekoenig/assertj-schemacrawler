@@ -22,9 +22,10 @@ public abstract class AbstractTableAssert<
                 .asInstanceOf(InstanceOfAssertFactories.collection(PrimaryKey.class));
     }
 
-    public ClassBasedNavigableListAssert<?, List<Column>, Column, ColumnAssert> columns() {
+    public FactoryBasedNavigableListAssert<?, List<Column>, Column, ColumnAssert> columns() {
         isNotNull();
-        return new ClassBasedNavigableListAssert<>(actual.getColumns(), ColumnAssert.class);
+        return new FactoryBasedNavigableListAssert<>(actual.getColumns(), FactoryBasedNavigableListAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF matchesDefinition(Predicate<String> predicate) {
@@ -32,34 +33,34 @@ public abstract class AbstractTableAssert<
         return myself;
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<ForeignKey>, ForeignKey, ForeignKeyAssert> exportedForeignKeys() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<ForeignKey>, ForeignKey, ForeignKeyAssert> exportedForeignKeys() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getExportedForeignKeys(),
-                ClassBasedNavigableIterableAssert.class, ForeignKeyAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getExportedForeignKeys(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<ForeignKey>, ForeignKey, ForeignKeyAssert> foreignKeys() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<ForeignKey>, ForeignKey, ForeignKeyAssert> foreignKeys() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getForeignKeys(), ClassBasedNavigableIterableAssert.class,
-                ForeignKeyAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getForeignKeys(), FactoryBasedNavigableIterableAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Column>, Column, ColumnAssert> hiddenColumns() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Column>, Column, ColumnAssert> hiddenColumns() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getHiddenColumns(),
-                ClassBasedNavigableIterableAssert.class, ColumnAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getHiddenColumns(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<ForeignKey>, ForeignKey, ForeignKeyAssert> importedForeignKeys() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<ForeignKey>, ForeignKey, ForeignKeyAssert> importedForeignKeys() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getImportedForeignKeys(),
-                ClassBasedNavigableIterableAssert.class, ForeignKeyAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getImportedForeignKeys(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Index>, Index, IndexAssert> indexes() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Index>, Index, IndexAssert> indexes() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getIndexes(), ClassBasedNavigableIterableAssert.class,
-                IndexAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getIndexes(), FactoryBasedNavigableIterableAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public PrimaryKeyAssert primaryKey() {
@@ -73,17 +74,17 @@ public abstract class AbstractTableAssert<
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> relatedTables(
+    public FactoryBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> relatedTables(
             TableRelationshipType tableRelationshipType) {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getRelatedTables(tableRelationshipType),
-                ClassBasedNavigableIterableAssert.class, TableAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getRelatedTables(tableRelationshipType),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<TableConstraint>, TableConstraint, TableConstraintAssert> tableConstraints() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<TableConstraint>, TableConstraint, TableConstraintAssert> tableConstraints() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getTableConstraints(),
-                ClassBasedNavigableIterableAssert.class, TableConstraintAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getTableConstraints(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     @SafeVarargs
@@ -92,10 +93,10 @@ public abstract class AbstractTableAssert<
         return myself;
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Trigger>, Trigger, TriggerAssert> triggers() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Trigger>, Trigger, TriggerAssert> triggers() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getTriggers(), ClassBasedNavigableIterableAssert.class,
-                TriggerAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getTriggers(), FactoryBasedNavigableIterableAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
     @SafeVarargs
@@ -104,10 +105,10 @@ public abstract class AbstractTableAssert<
         return myself;
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<WeakAssociation>, TableReference, TableReferenceAssert> weakAssociation() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<WeakAssociation>, TableReference, TableReferenceAssert> weakAssociation() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getWeakAssociations(),
-                ClassBasedNavigableIterableAssert.class, TableReferenceAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getWeakAssociations(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF hasDefinition(boolean expected) {

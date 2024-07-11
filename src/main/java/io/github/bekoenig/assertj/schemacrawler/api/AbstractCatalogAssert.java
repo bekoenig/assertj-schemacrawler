@@ -12,19 +12,19 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
         super(actual, selfType);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getColumnDataTypes(),
-                ClassBasedNavigableIterableAssert.class, ColumnDataTypeAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getColumnDataTypes(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes(
+    public FactoryBasedNavigableIterableAssert<?, Collection<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes(
             String schemaName) {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(
+        return new FactoryBasedNavigableIterableAssert<>(
                 actual.getColumnDataTypes(actual.lookupSchema(schemaName)
                         .orElseThrow()),
-                ClassBasedNavigableIterableAssert.class, ColumnDataTypeAssert.class);
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public ObjectAssert<CrawlInfo> crawlInfo() {
@@ -47,74 +47,74 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
                 .asInstanceOf(InstanceOfAssertFactories.type(CrawlInfo.class));
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Routine>, Routine, RoutineAssert> routines() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Routine>, Routine, RoutineAssert> routines() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getRoutines(), ClassBasedNavigableIterableAssert.class,
-                RoutineAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getRoutines(), FactoryBasedNavigableIterableAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Routine>, Routine, RoutineAssert> routines(
+    public FactoryBasedNavigableIterableAssert<?, Collection<Routine>, Routine, RoutineAssert> routines(
             String schemaName) {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(
+        return new FactoryBasedNavigableIterableAssert<>(
                 actual.getRoutines(actual.lookupSchema(schemaName)
                         .orElseThrow()),
-                ClassBasedNavigableIterableAssert.class, RoutineAssert.class);
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Schema>, Schema, SchemaAssert> schemas() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Schema>, Schema, SchemaAssert> schemas() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getSchemas(), ClassBasedNavigableIterableAssert.class,
-                SchemaAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getSchemas(), FactoryBasedNavigableIterableAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Sequence>, Sequence, SequenceAssert> sequences() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Sequence>, Sequence, SequenceAssert> sequences() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getSequences(), ClassBasedNavigableIterableAssert.class,
-                SequenceAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getSequences(), FactoryBasedNavigableIterableAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Sequence>, Sequence, SequenceAssert> sequences(
+    public FactoryBasedNavigableIterableAssert<?, Collection<Sequence>, Sequence, SequenceAssert> sequences(
             String schemaName) {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(
+        return new FactoryBasedNavigableIterableAssert<>(
                 actual.getSequences(actual.lookupSchema(schemaName)
                         .orElseThrow()),
-                ClassBasedNavigableIterableAssert.class, SequenceAssert.class);
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Synonym>, Synonym, SynonymAssert> synonyms() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Synonym>, Synonym, SynonymAssert> synonyms() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getSynonyms(), ClassBasedNavigableIterableAssert.class,
-                SynonymAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getSynonyms(), FactoryBasedNavigableIterableAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Synonym>, Synonym, SynonymAssert> synonyms(
+    public FactoryBasedNavigableIterableAssert<?, Collection<Synonym>, Synonym, SynonymAssert> synonyms(
             String schemaName) {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(
+        return new FactoryBasedNavigableIterableAssert<>(
                 actual.getSynonyms(actual.lookupSchema(schemaName)
                         .orElseThrow()),
-                ClassBasedNavigableIterableAssert.class, SynonymAssert.class);
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> systemColumnDataTypes() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> systemColumnDataTypes() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getSystemColumnDataTypes(),
-                ClassBasedNavigableIterableAssert.class, ColumnDataTypeAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getSystemColumnDataTypes(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> tables() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> tables() {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getTables(), ClassBasedNavigableIterableAssert.class,
-                TableAssert.class);
+        return new FactoryBasedNavigableIterableAssert<>(actual.getTables(), FactoryBasedNavigableIterableAssert.class,
+                SchemaCrawlerAssertions::assertThat);
     }
 
-    public ClassBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> tables(String schemaName) {
+    public FactoryBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> tables(String schemaName) {
         isNotNull();
-        return new ClassBasedNavigableIterableAssert<>(actual.getTables(actual.lookupSchema(schemaName)
+        return new FactoryBasedNavigableIterableAssert<>(actual.getTables(actual.lookupSchema(schemaName)
                 .orElseThrow()),
-                ClassBasedNavigableIterableAssert.class, TableAssert.class);
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public ColumnAssert column(String schemaName, String tableName, String name) {

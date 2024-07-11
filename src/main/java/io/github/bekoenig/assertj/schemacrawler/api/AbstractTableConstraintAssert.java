@@ -1,15 +1,14 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
 import io.github.bekoenig.assertj.schemacrawler.internal.NamedObjectUtils;
-import org.assertj.core.api.ListAssert;
+import org.assertj.core.api.FactoryBasedNavigableListAssert;
 import schemacrawler.schema.Table;
 import schemacrawler.schema.TableConstraint;
 import schemacrawler.schema.TableConstraintColumn;
 import schemacrawler.schema.TableConstraintType;
 
+import java.util.List;
 import java.util.function.Predicate;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public abstract class AbstractTableConstraintAssert<
         SELF extends AbstractTableConstraintAssert<SELF, ACTUAL>,
@@ -20,8 +19,9 @@ public abstract class AbstractTableConstraintAssert<
         super(actual, selfType);
     }
 
-    public ListAssert<TableConstraintColumn> constrainedColumns() {
-        return assertThat(actual.getConstrainedColumns());
+    public FactoryBasedNavigableListAssert<?, List<TableConstraintColumn>, TableConstraintColumn, TableConstraintColumnAssert> constrainedColumns() {
+        isNotNull();
+        return new FactoryBasedNavigableListAssert<>(actual.getConstrainedColumns(), FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public TableConstraintColumnAssert constrainedColumn(String columnName) {

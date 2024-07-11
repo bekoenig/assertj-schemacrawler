@@ -1,6 +1,6 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.ClassBasedNavigableListAssert;
+import org.assertj.core.api.FactoryBasedNavigableListAssert;
 import schemacrawler.schema.*;
 
 import java.util.List;
@@ -18,8 +18,9 @@ public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>
         return myself;
     }
 
-    public ClassBasedNavigableListAssert<?, List<? extends IndexColumn>, IndexColumn, IndexColumnAssert> columns() {
-        return new ClassBasedNavigableListAssert<>(actual.getColumns(), IndexColumnAssert.class);
+    public FactoryBasedNavigableListAssert<?, List<? extends IndexColumn>, IndexColumn, IndexColumnAssert> columns() {
+        isNotNull();
+        return new FactoryBasedNavigableListAssert<>(actual.getColumns(), FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF matchesDefinition(Predicate<String> predicate) {
