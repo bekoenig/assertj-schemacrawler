@@ -138,7 +138,7 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.schemaReference());
     }
 
-    public SequenceAssert squence(String schemaName, String name) {
+    public SequenceAssert sequence(String schemaName, String name) {
         return extracting(x -> x.lookupSequence(x.lookupSchema(schemaName)
                         .orElseThrow(), name)
                 .orElse(null))
