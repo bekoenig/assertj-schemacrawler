@@ -21,10 +21,6 @@ public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SEL
         return myself;
     }
 
-    public SELF hasDefaultValue(String expected) {
-        return matchesDefaultValue(Predicate.isEqual(expected));
-    }
-
     public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<Column>>, Privilege<Column>, PrivilegeAssert<Column>> privileges() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
