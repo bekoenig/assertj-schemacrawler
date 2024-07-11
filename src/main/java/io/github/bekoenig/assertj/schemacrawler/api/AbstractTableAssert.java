@@ -17,9 +17,9 @@ public abstract class AbstractTableAssert<
         super(actual, selfType);
     }
 
-    public AbstractCollectionAssert<?, Collection<? extends PrimaryKey>, PrimaryKey, ObjectAssert<PrimaryKey>> alternateKeys() {
-        return extracting(Table::getAlternateKeys)
-                .asInstanceOf(InstanceOfAssertFactories.collection(PrimaryKey.class));
+    public FactoryBasedNavigableIterableAssert<?, Collection<PrimaryKey>, PrimaryKey, PrimaryKeyAssert> alternateKeys() {
+        isNotNull();
+        return new FactoryBasedNavigableIterableAssert<>(actual.getAlternateKeys(), FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public FactoryBasedNavigableListAssert<?, List<Column>, Column, ColumnAssert> columns() {
