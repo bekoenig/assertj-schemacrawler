@@ -20,7 +20,9 @@ public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>
 
     public FactoryBasedNavigableListAssert<?, List<? extends IndexColumn>, IndexColumn, IndexColumnAssert> columns() {
         isNotNull();
-        return new FactoryBasedNavigableListAssert<>(actual.getColumns(), FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableListAssert<>(
+                actual.getColumns(),
+                FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF matchesDefinition(Predicate<String> predicate) {

@@ -21,7 +21,9 @@ public abstract class AbstractTableConstraintAssert<
 
     public FactoryBasedNavigableListAssert<?, List<TableConstraintColumn>, TableConstraintColumn, TableConstraintColumnAssert> constrainedColumns() {
         isNotNull();
-        return new FactoryBasedNavigableListAssert<>(actual.getConstrainedColumns(), FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableListAssert<>(
+                actual.getConstrainedColumns(),
+                FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public TableConstraintColumnAssert constrainedColumn(String columnName) {

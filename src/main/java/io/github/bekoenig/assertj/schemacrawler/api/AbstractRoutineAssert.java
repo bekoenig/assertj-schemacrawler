@@ -18,7 +18,9 @@ public class AbstractRoutineAssert<
 
     public <R extends Routine> FactoryBasedNavigableIterableAssert<?, List<RoutineParameter<R>>, RoutineParameter<R>, RoutineParameterAssert<R>> parameters() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getParameters(), FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getParameters(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF hasReturnType(RoutineReturnType routineReturnType) {

@@ -23,8 +23,9 @@ public abstract class AbstractViewAssert<SELF extends AbstractViewAssert<SELF>>
 
     public FactoryBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> tableUsage() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getTableUsage(), FactoryBasedNavigableIterableAssert.class,
-                SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getTableUsage(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF isUpdatable(boolean expected) {

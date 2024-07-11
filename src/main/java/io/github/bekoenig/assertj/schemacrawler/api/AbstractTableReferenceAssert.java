@@ -18,7 +18,9 @@ public abstract class AbstractTableReferenceAssert<
     }
 
     public FactoryBasedNavigableListAssert<?, List<ColumnReference>, ColumnReference, ColumnReferenceAssert> columnReferences() {
-        return new FactoryBasedNavigableListAssert<>(actual.getColumnReferences(), FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableListAssert<>(
+                actual.getColumnReferences(),
+                FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     @SafeVarargs

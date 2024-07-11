@@ -38,7 +38,8 @@ public abstract class AbstractKeyColumnAssert<
 
     public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<Column>>, Privilege<Column>, PrivilegeAssert<Column>> privileges() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getPrivileges(),
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getPrivileges(),
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 

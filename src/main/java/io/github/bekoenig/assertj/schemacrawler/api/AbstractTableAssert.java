@@ -19,13 +19,16 @@ public abstract class AbstractTableAssert<
 
     public FactoryBasedNavigableIterableAssert<?, Collection<PrimaryKey>, PrimaryKey, PrimaryKeyAssert> alternateKeys() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getAlternateKeys(), FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getAlternateKeys(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public FactoryBasedNavigableListAssert<?, List<Column>, Column, ColumnAssert> columns() {
         isNotNull();
-        return new FactoryBasedNavigableListAssert<>(actual.getColumns(), FactoryBasedNavigableListAssert.class,
-                SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableListAssert<>(
+                actual.getColumns(),
+                FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF matchesDefinition(Predicate<String> predicate) {
@@ -35,32 +38,37 @@ public abstract class AbstractTableAssert<
 
     public FactoryBasedNavigableIterableAssert<?, Collection<ForeignKey>, ForeignKey, ForeignKeyAssert> exportedForeignKeys() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getExportedForeignKeys(),
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getExportedForeignKeys(),
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public FactoryBasedNavigableIterableAssert<?, Collection<ForeignKey>, ForeignKey, ForeignKeyAssert> foreignKeys() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getForeignKeys(), FactoryBasedNavigableIterableAssert.class,
-                SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getForeignKeys(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public FactoryBasedNavigableIterableAssert<?, Collection<Column>, Column, ColumnAssert> hiddenColumns() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getHiddenColumns(),
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getHiddenColumns(),
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public FactoryBasedNavigableIterableAssert<?, Collection<ForeignKey>, ForeignKey, ForeignKeyAssert> importedForeignKeys() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getImportedForeignKeys(),
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getImportedForeignKeys(),
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public FactoryBasedNavigableIterableAssert<?, Collection<Index>, Index, IndexAssert> indexes() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getIndexes(), FactoryBasedNavigableIterableAssert.class,
-                SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getIndexes(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public PrimaryKeyAssert primaryKey() {
@@ -70,20 +78,23 @@ public abstract class AbstractTableAssert<
 
     public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<Table>>, Privilege<Table>, PrivilegeAssert<Table>> privileges() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getPrivileges(),
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getPrivileges(),
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public FactoryBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> relatedTables(
             TableRelationshipType tableRelationshipType) {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getRelatedTables(tableRelationshipType),
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getRelatedTables(tableRelationshipType),
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public FactoryBasedNavigableIterableAssert<?, Collection<TableConstraint>, TableConstraint, TableConstraintAssert> tableConstraints() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getTableConstraints(),
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getTableConstraints(),
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
@@ -95,8 +106,9 @@ public abstract class AbstractTableAssert<
 
     public FactoryBasedNavigableIterableAssert<?, Collection<Trigger>, Trigger, TriggerAssert> triggers() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getTriggers(), FactoryBasedNavigableIterableAssert.class,
-                SchemaCrawlerAssertions::assertThat);
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getTriggers(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     @SafeVarargs
@@ -107,7 +119,8 @@ public abstract class AbstractTableAssert<
 
     public FactoryBasedNavigableIterableAssert<?, Collection<WeakAssociation>, TableReference, TableReferenceAssert> weakAssociation() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(actual.getWeakAssociations(),
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getWeakAssociations(),
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
