@@ -1,9 +1,10 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.AbstractObjectAssert;
+import org.assertj.core.api.FactoryBasedNavigableIterableAssert;
 import schemacrawler.schema.*;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class AbstractRoutineAssert<
         SELF extends AbstractRoutineAssert<SELF, ACTUAL>,
@@ -14,9 +15,10 @@ public class AbstractRoutineAssert<
         super(actual, selfType);
     }
 
-    public AbstractObjectAssert<?, List<RoutineParameter<? extends Routine>>> parameters() {
-        // TODO: implement specific assert
-        return extracting(Routine::getParameters);
+
+    public <R extends Routine> FactoryBasedNavigableIterableAssert<?, List<RoutineParameter<R>>, RoutineParameter<R>, RoutineParameterAssert<R>> parameters() {
+        isNotNull();
+        return new FactoryBasedNavigableIterableAssert<>(actual.getParameters(), FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF hasReturnType(RoutineReturnType routineReturnType) {
@@ -34,16 +36,15 @@ public class AbstractRoutineAssert<
         return myself;
     }
 
-    public SELF hasSpecificName(String specificName) {
-        extracting(Routine::getSpecificName).isEqualTo(specificName);
+    public SELF matchesSpecificName(Predicate<String> predicate) {
+        extracting(Routine::getSpecificName).matches(predicate);
         return myself;
     }
 
-    public AbstractObjectAssert<?, ? extends RoutineParameter<? extends Routine>> parameter(String name) {
+    public RoutineParameterAssert<?> parameter(String name) {
         return extracting(x -> x.lookupParameter(name)
-                .orElse(null));
-        // TODO: implement specific assert
-        //.asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.routineParameter());
+                .orElse(null))
+                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.routineParameter());
     }
 
 }
