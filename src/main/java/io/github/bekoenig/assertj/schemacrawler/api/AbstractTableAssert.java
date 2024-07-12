@@ -98,9 +98,8 @@ public abstract class AbstractTableAssert<
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    @SafeVarargs
-    public final SELF satisfiesTableType(Consumer<TableType>... requirements) {
-        extracting(Table::getTableType).satisfies(requirements);
+    public final SELF satisfiesTableType(Consumer<TableType> requirement) {
+        extracting(Table::getTableType).satisfies(requirement);
         return myself;
     }
 
@@ -111,9 +110,8 @@ public abstract class AbstractTableAssert<
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    @SafeVarargs
-    public final SELF satisfiesType(Consumer<TableType>... requirements) {
-        extracting(Table::getType).satisfies(requirements);
+    public final SELF satisfiesType(Consumer<TableType> requirement) {
+        extracting(Table::getType).satisfies(requirement);
         return myself;
     }
 

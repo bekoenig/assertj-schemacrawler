@@ -15,9 +15,8 @@ public abstract class AbstractTableConstraintColumnAssert<
         super(actual, selfType);
     }
 
-    @SafeVarargs
-    public final SELF satisfiesTableConstraint(Consumer<TableConstraint>... requirements) {
-        extracting(TableConstraintColumn::getTableConstraint).satisfies(requirements);
+    public final SELF satisfiesTableConstraint(Consumer<TableConstraint> requirement) {
+        extracting(TableConstraintColumn::getTableConstraint).satisfies(requirement);
         return myself;
     }
 

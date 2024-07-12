@@ -54,8 +54,7 @@ public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>
     }
 
     public IndexColumnAssert column(String name) {
-        return extracting(x -> x.lookupColumn(name)
-                .orElse(null))
+        return extracting(x -> x.lookupColumn(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.indexColumn());
     }
 

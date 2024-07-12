@@ -14,9 +14,8 @@ public abstract class AbstractDatabaseObjectAssert<
         super(actual, selfType);
     }
 
-    @SafeVarargs
-    public final SELF satisfiesSchema(Consumer<Schema>... requirements) {
-        extracting(DatabaseObject::getSchema).satisfies(requirements);
+    public final SELF satisfiesSchema(Consumer<Schema> requirement) {
+        extracting(DatabaseObject::getSchema).satisfies(requirement);
         return myself;
     }
 

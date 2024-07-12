@@ -16,9 +16,10 @@ public abstract class AbstractColumnDataTypeAssert<SELF extends AbstractColumnDa
         super(actual, selfType);
     }
 
-    public ColumnDataTypeAssert baseType() {
-        return extracting(ColumnDataType::getBaseType)
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.columnDataType());
+    public SELF satisfiesBaseType(Consumer<ColumnDataType> requirement) {
+        extracting(ColumnDataType::getBaseType)
+                .satisfies(requirement);
+        return myself;
     }
 
     public SELF matchesCreateParameters(Predicate<String> predicate) {
@@ -36,8 +37,8 @@ public abstract class AbstractColumnDataTypeAssert<SELF extends AbstractColumnDa
         return myself;
     }
 
-    public SELF satisfiesJavaSqlType(Consumer<JavaSqlType> requirements) {
-        extracting(ColumnDataType::getJavaSqlType).satisfies(requirements);
+    public SELF satisfiesJavaSqlType(Consumer<JavaSqlType> requirement) {
+        extracting(ColumnDataType::getJavaSqlType).satisfies(requirement);
         return myself;
     }
 

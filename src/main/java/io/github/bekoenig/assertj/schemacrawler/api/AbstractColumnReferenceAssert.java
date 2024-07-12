@@ -1,8 +1,10 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
 import org.assertj.core.api.AbstractObjectAssert;
+import schemacrawler.schema.Column;
 import schemacrawler.schema.ColumnReference;
 
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class AbstractColumnReferenceAssert<SELF extends AbstractColumnReferenceAssert<SELF>> extends AbstractObjectAssert<SELF, ColumnReference> {
@@ -11,9 +13,10 @@ public class AbstractColumnReferenceAssert<SELF extends AbstractColumnReferenceA
         super(columnReference, selfType);
     }
 
-    public ColumnAssert foreignKeyColumn() {
-        return extracting(ColumnReference::getForeignKeyColumn)
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.column());
+    public SELF satisfiesForeignKeyColumn(Consumer<Column> requirement) {
+        extracting(ColumnReference::getForeignKeyColumn)
+                .satisfies(requirement);
+        return myself;
     }
 
     public SELF matchesKeySequence(Predicate<Integer> predicate) {
@@ -22,9 +25,10 @@ public class AbstractColumnReferenceAssert<SELF extends AbstractColumnReferenceA
         return myself;
     }
 
-    public ColumnAssert primaryKeyColumn() {
-        return extracting(ColumnReference::getPrimaryKeyColumn)
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.column());
+    public SELF satisfiesPrimaryKeyColumn(Consumer<Column> requirement) {
+        extracting(ColumnReference::getPrimaryKeyColumn)
+                .satisfies(requirement);
+        return myself;
     }
 
 }

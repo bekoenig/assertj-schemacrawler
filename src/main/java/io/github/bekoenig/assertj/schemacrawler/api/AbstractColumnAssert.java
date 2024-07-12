@@ -28,9 +28,8 @@ public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SEL
                 FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    @SafeVarargs
-    public final SELF satisfiesReferencedColumn(Consumer<Column>... requirements) {
-        extracting(Column::getReferencedColumn).satisfies(requirements);
+    public final SELF satisfiesReferencedColumn(Consumer<Column> requirement) {
+        extracting(Column::getReferencedColumn).satisfies(requirement);
         return myself;
     }
 

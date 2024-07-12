@@ -15,9 +15,8 @@ public abstract class AbstractViewAssert<SELF extends AbstractViewAssert<SELF>>
         super(actual, selfType);
     }
 
-    @SafeVarargs
-    public final SELF satisfiesCheckOption(Consumer<CheckOptionType>... requirements) {
-        extracting(View::getCheckOption).satisfies(requirements);
+    public final SELF satisfiesCheckOption(Consumer<CheckOptionType> requirement) {
+        extracting(View::getCheckOption).satisfies(requirement);
         return myself;
     }
 

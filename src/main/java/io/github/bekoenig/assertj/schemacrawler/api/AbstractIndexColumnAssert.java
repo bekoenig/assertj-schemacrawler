@@ -14,9 +14,8 @@ public class AbstractIndexColumnAssert<SELF extends AbstractIndexColumnAssert<SE
         super(actual, selfType);
     }
 
-    @SafeVarargs
-    public final SELF satisfiesIndex(Consumer<Index>... requirements) {
-        extracting(IndexColumn::getIndex).satisfies(requirements);
+    public final SELF satisfiesIndex(Consumer<Index> requirement) {
+        extracting(IndexColumn::getIndex).satisfies(requirement);
         return myself;
     }
 
@@ -25,9 +24,8 @@ public class AbstractIndexColumnAssert<SELF extends AbstractIndexColumnAssert<SE
         return myself;
     }
 
-    @SafeVarargs
-    public final SELF satisfiesSortSequence(Consumer<IndexColumnSortSequence>... requirements) {
-        extracting(IndexColumn::getSortSequence).satisfies(requirements);
+    public final SELF satisfiesSortSequence(Consumer<IndexColumnSortSequence> requirement) {
+        extracting(IndexColumn::getSortSequence).satisfies(requirement);
         return myself;
     }
 

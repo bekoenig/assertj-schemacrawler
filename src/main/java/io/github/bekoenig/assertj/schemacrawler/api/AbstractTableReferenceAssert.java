@@ -23,15 +23,13 @@ public abstract class AbstractTableReferenceAssert<
                 FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    @SafeVarargs
-    public final SELF satisfiesForeignKeyTable(Consumer<Table>... requirements) {
-        extracting(TableReference::getForeignKeyTable).satisfies(requirements);
+    public final SELF satisfiesForeignKeyTable(Consumer<Table> requirement) {
+        extracting(TableReference::getForeignKeyTable).satisfies(requirement);
         return myself;
     }
 
-    @SafeVarargs
-    public final SELF satisfiesPrimaryKeyTable(Consumer<Table>... requirements) {
-        extracting(TableReference::getPrimaryKeyTable).satisfies(requirements);
+    public final SELF satisfiesPrimaryKeyTable(Consumer<Table> requirement) {
+        extracting(TableReference::getPrimaryKeyTable).satisfies(requirement);
         return myself;
     }
 
