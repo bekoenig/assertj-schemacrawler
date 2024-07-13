@@ -15,7 +15,6 @@ public class AbstractRoutineAssert<
         super(actual, selfType);
     }
 
-
     public FactoryBasedNavigableIterableAssert<?, List<RoutineParameter<?>>, RoutineParameter<?>, RoutineParameterAssert> parameters() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
