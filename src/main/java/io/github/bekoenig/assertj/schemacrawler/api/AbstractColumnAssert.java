@@ -6,6 +6,7 @@ import schemacrawler.schema.ColumnDataType;
 import schemacrawler.schema.Privilege;
 import schemacrawler.schema.Table;
 
+import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -21,7 +22,7 @@ public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SEL
         return myself;
     }
 
-    public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
                 actual.getPrivileges(),

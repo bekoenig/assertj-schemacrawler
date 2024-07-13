@@ -76,7 +76,7 @@ public abstract class AbstractTableAssert<
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.primaryKey());
     }
 
-    public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
                 actual.getPrivileges(),

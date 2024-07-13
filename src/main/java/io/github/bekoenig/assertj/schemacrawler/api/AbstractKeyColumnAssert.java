@@ -3,6 +3,7 @@ package io.github.bekoenig.assertj.schemacrawler.api;
 import org.assertj.core.api.FactoryBasedNavigableIterableAssert;
 import schemacrawler.schema.*;
 
+import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -35,7 +36,7 @@ public abstract class AbstractKeyColumnAssert<
         return myself;
     }
 
-    public FactoryBasedNavigableIterableAssert<?, Iterable<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
+    public FactoryBasedNavigableIterableAssert<?, Collection<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
                 actual.getPrivileges(),
