@@ -1,6 +1,10 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
+import org.assertj.core.api.FactoryBasedNavigableIterableAssert;
+import schemacrawler.schema.Grant;
 import schemacrawler.schema.Privilege;
+
+import java.util.Collection;
 
 public abstract class AbstractPrivilegeAssert<
         SELF extends AbstractPrivilegeAssert<SELF, ACTUAL>,
@@ -11,9 +15,11 @@ public abstract class AbstractPrivilegeAssert<
         super(actual, selfType);
     }
 
-    public GrantAssert grants() {
-        return extracting(Privilege::getGrants)
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.grant());
+    public FactoryBasedNavigableIterableAssert<?, Collection<? extends Grant<?>>, Grant<?>, GrantAssert> parameters() {
+        isNotNull();
+        return new FactoryBasedNavigableIterableAssert<>(
+                actual.getGrants(),
+                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
     }
 
 }
