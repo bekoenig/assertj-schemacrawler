@@ -1,15 +1,16 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
 import org.assertj.core.api.AbstractObjectAssert;
+import schemacrawler.schema.DatabaseObject;
 import schemacrawler.schema.Grant;
 
 import java.util.function.Predicate;
 
 public class AbstractGrantAssert<
         SELF extends AbstractGrantAssert<SELF>>
-        extends AbstractObjectAssert<SELF, Grant<?>> {
+        extends AbstractObjectAssert<SELF, Grant<? extends DatabaseObject>> {
 
-    public AbstractGrantAssert(Grant<?> actual, Class<?> selfType) {
+    public AbstractGrantAssert(Grant<? extends DatabaseObject> actual, Class<?> selfType) {
         super(actual, selfType);
     }
 

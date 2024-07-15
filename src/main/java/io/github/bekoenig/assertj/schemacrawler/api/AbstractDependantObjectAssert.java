@@ -1,12 +1,13 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
+import schemacrawler.schema.DatabaseObject;
 import schemacrawler.schema.DependantObject;
 
 import java.util.function.Predicate;
 
 public abstract class AbstractDependantObjectAssert<
         SELF extends AbstractDependantObjectAssert<SELF, ACTUAL>,
-        ACTUAL extends DependantObject<?>>
+        ACTUAL extends DependantObject<? extends DatabaseObject>>
         extends AbstractDatabaseObjectAssert<SELF, ACTUAL> {
 
     protected AbstractDependantObjectAssert(ACTUAL actual, Class<?> selfType) {

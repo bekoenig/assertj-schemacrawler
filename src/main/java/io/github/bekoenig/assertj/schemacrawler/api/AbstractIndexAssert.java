@@ -1,9 +1,7 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.FactoryBasedNavigableListAssert;
 import schemacrawler.schema.*;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>>
@@ -18,11 +16,11 @@ public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>
         return myself;
     }
 
-    public FactoryBasedNavigableListAssert<?, List<? extends IndexColumn>, IndexColumn, IndexColumnAssert> columns() {
+    public ListableNamedObjectAssert<IndexColumn, IndexColumnAssert> columns() {
         isNotNull();
-        return new FactoryBasedNavigableListAssert<>(
+        return new ListableNamedObjectAssert<>(
                 actual.getColumns(),
-                FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF matchesDefinition(Predicate<String> predicate) {

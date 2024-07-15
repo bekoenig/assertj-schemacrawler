@@ -1,6 +1,7 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
 import org.assertj.core.api.FactoryBasedNavigableIterableAssert;
+import schemacrawler.schema.DatabaseObject;
 import schemacrawler.schema.Grant;
 import schemacrawler.schema.Privilege;
 
@@ -8,7 +9,7 @@ import java.util.Collection;
 
 public abstract class AbstractPrivilegeAssert<
         SELF extends AbstractPrivilegeAssert<SELF, ACTUAL>,
-        ACTUAL extends Privilege<?>>
+        ACTUAL extends Privilege<? extends DatabaseObject>>
         extends AbstractDependantObjectAssert<SELF, ACTUAL> {
 
     protected AbstractPrivilegeAssert(ACTUAL actual, Class<?> selfType) {

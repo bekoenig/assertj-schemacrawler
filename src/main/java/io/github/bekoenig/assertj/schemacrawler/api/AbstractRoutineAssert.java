@@ -1,9 +1,7 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.FactoryBasedNavigableIterableAssert;
 import schemacrawler.schema.*;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 public class AbstractRoutineAssert<
@@ -15,11 +13,11 @@ public class AbstractRoutineAssert<
         super(actual, selfType);
     }
 
-    public FactoryBasedNavigableIterableAssert<?, List<RoutineParameter<?>>, RoutineParameter<?>, RoutineParameterAssert> parameters() {
+    public ListableNamedObjectAssert<RoutineParameter<?>, RoutineParameterAssert> parameters() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(
+        return new ListableNamedObjectAssert<>(
                 actual.getParameters(),
-                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF hasReturnType(RoutineReturnType expected) {

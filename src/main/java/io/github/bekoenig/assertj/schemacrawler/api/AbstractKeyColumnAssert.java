@@ -1,9 +1,7 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.FactoryBasedNavigableIterableAssert;
 import schemacrawler.schema.*;
 
-import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -36,11 +34,11 @@ public abstract class AbstractKeyColumnAssert<
         return myself;
     }
 
-    public FactoryBasedNavigableIterableAssert<?, Collection<? extends Privilege<?>>, Privilege<?>, PrivilegeAssert> privileges() {
+    public ListableNamedObjectAssert<Privilege<?>, PrivilegeAssert> privileges() {
         isNotNull();
-        return new FactoryBasedNavigableIterableAssert<>(
+        return new ListableNamedObjectAssert<>(
                 actual.getPrivileges(),
-                FactoryBasedNavigableIterableAssert.class, SchemaCrawlerAssertions::assertThat);
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public final SELF satisfiesReferencedColumn(Consumer<Column> requirement) {
