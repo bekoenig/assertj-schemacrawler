@@ -26,7 +26,7 @@ public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SEL
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public final SELF satisfiesReferencedColumn(Consumer<Column> requirement) {
+    public SELF satisfiesReferencedColumn(Consumer<Column> requirement) {
         extracting(Column::getReferencedColumn).satisfies(requirement);
         return myself;
     }

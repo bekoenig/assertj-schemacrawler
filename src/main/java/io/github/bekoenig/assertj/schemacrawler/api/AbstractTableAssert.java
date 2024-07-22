@@ -95,7 +95,7 @@ public abstract class AbstractTableAssert<
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public final SELF satisfiesTableType(Consumer<TableType> requirement) {
+    public SELF satisfiesTableType(Consumer<TableType> requirement) {
         extracting(Table::getTableType).satisfies(requirement);
         return myself;
     }
@@ -107,7 +107,7 @@ public abstract class AbstractTableAssert<
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public final SELF satisfiesType(Consumer<TableType> requirement) {
+    public SELF satisfiesType(Consumer<TableType> requirement) {
         extracting(Table::getType).satisfies(requirement);
         return myself;
     }

@@ -15,7 +15,7 @@ public abstract class AbstractBaseColumnAssert<
         super(actual, selfType);
     }
 
-    public final SELF satisfiesColumnDataType(Consumer<ColumnDataType> requirement) {
+    public SELF satisfiesColumnDataType(Consumer<ColumnDataType> requirement) {
         extracting(BaseColumn::getColumnDataType).satisfies(requirement);
         return myself;
     }
@@ -35,7 +35,7 @@ public abstract class AbstractBaseColumnAssert<
         return myself;
     }
 
-    public final SELF satisfiesType(Consumer<ColumnDataType> requirement) {
+    public SELF satisfiesType(Consumer<ColumnDataType> requirement) {
         extracting(BaseColumn::getType).satisfies(requirement);
         return myself;
     }

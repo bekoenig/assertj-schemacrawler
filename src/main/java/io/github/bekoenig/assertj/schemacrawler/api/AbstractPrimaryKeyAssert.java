@@ -12,7 +12,7 @@ public abstract class AbstractPrimaryKeyAssert<SELF extends AbstractPrimaryKeyAs
         super(actual, selfType);
     }
 
-    public final SELF satisfiesType(Consumer<TableConstraintType> requirement) {
+    public SELF satisfiesType(Consumer<TableConstraintType> requirement) {
         extracting(PrimaryKey::getType).satisfies(requirement);
         return myself;
     }

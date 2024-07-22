@@ -15,7 +15,7 @@ public abstract class AbstractForeignKeyAssert<SELF extends AbstractForeignKeyAs
         super(actual, selfType);
     }
 
-    public final SELF satisfiesDeferrability(Consumer<ForeignKeyDeferrability> requirement) {
+    public SELF satisfiesDeferrability(Consumer<ForeignKeyDeferrability> requirement) {
         extracting(ForeignKey::getDeferrability).satisfies(requirement);
         return myself;
     }
@@ -25,17 +25,17 @@ public abstract class AbstractForeignKeyAssert<SELF extends AbstractForeignKeyAs
         return myself;
     }
 
-    public final SELF satisfiesDeleteRule(Consumer<ForeignKeyUpdateRule> requirement) {
+    public SELF satisfiesDeleteRule(Consumer<ForeignKeyUpdateRule> requirement) {
         extracting(ForeignKey::getDeleteRule).satisfies(requirement);
         return myself;
     }
 
-    public final SELF satisfiesType(Consumer<TableConstraintType> requirement) {
+    public SELF satisfiesType(Consumer<TableConstraintType> requirement) {
         extracting(ForeignKey::getType).satisfies(requirement);
         return myself;
     }
 
-    public final SELF satisfiesUpdateRule(Consumer<ForeignKeyUpdateRule> requirement) {
+    public SELF satisfiesUpdateRule(Consumer<ForeignKeyUpdateRule> requirement) {
         extracting(ForeignKey::getUpdateRule).satisfies(requirement);
         return myself;
     }

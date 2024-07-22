@@ -14,7 +14,7 @@ public abstract class AbstractDatabaseObjectAssert<
         super(actual, selfType);
     }
 
-    public final SELF satisfiesSchema(Consumer<Schema> requirement) {
+    public SELF satisfiesSchema(Consumer<Schema> requirement) {
         extracting(DatabaseObject::getSchema).satisfies(requirement);
         return myself;
     }

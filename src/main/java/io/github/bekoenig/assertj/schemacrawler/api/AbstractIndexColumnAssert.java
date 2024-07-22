@@ -14,7 +14,7 @@ public class AbstractIndexColumnAssert<SELF extends AbstractIndexColumnAssert<SE
         super(actual, selfType);
     }
 
-    public final SELF satisfiesIndex(Consumer<Index> requirement) {
+    public SELF satisfiesIndex(Consumer<Index> requirement) {
         extracting(IndexColumn::getIndex).satisfies(requirement);
         return myself;
     }
@@ -24,7 +24,7 @@ public class AbstractIndexColumnAssert<SELF extends AbstractIndexColumnAssert<SE
         return myself;
     }
 
-    public final SELF satisfiesSortSequence(Consumer<IndexColumnSortSequence> requirement) {
+    public SELF satisfiesSortSequence(Consumer<IndexColumnSortSequence> requirement) {
         extracting(IndexColumn::getSortSequence).satisfies(requirement);
         return myself;
     }

@@ -14,7 +14,7 @@ public abstract class AbstractKeyColumnAssert<
         super(actual, selfType);
     }
 
-    public final SELF satisfiesColumnDataType(Consumer<ColumnDataType> requirement) {
+    public SELF satisfiesColumnDataType(Consumer<ColumnDataType> requirement) {
         extracting(BaseColumn::getColumnDataType).satisfies(requirement);
         return myself;
     }
@@ -41,7 +41,7 @@ public abstract class AbstractKeyColumnAssert<
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public final SELF satisfiesReferencedColumn(Consumer<Column> requirement) {
+    public SELF satisfiesReferencedColumn(Consumer<Column> requirement) {
         extracting(Column::getReferencedColumn).satisfies(requirement);
         return myself;
     }
@@ -51,7 +51,7 @@ public abstract class AbstractKeyColumnAssert<
         return myself;
     }
 
-    public final SELF satisfiesType(Consumer<ColumnDataType> requirement) {
+    public SELF satisfiesType(Consumer<ColumnDataType> requirement) {
         extracting(BaseColumn::getType).satisfies(requirement);
         return myself;
     }
