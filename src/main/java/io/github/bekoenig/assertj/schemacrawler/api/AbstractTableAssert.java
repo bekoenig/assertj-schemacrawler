@@ -68,9 +68,10 @@ public abstract class AbstractTableAssert<
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public PrimaryKeyAssert primaryKey() {
-        return extracting(Table::getPrimaryKey)
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.primaryKey());
+    public SELF satisfiesPrimaryKey(Consumer<PrimaryKey> requirement) {
+        extracting(Table::getPrimaryKey)
+                .satisfies(requirement);
+        return myself;
     }
 
     public ListableNamedObjectAssert<Privilege<?>, PrivilegeAssert> privileges() {
