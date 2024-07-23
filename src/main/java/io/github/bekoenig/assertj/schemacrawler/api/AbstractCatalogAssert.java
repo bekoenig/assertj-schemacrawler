@@ -28,8 +28,7 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<ColumnDataType, ColumnDataTypeAssert> columnDataTypes(
-            String schemaName) {
+    public ListableNamedObjectAssert<ColumnDataType, ColumnDataTypeAssert> columnDataTypes(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getColumnDataTypes(getSchema(schemaName)),
@@ -63,8 +62,7 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Routine, RoutineAssert> routines(
-            String schemaName) {
+    public ListableNamedObjectAssert<Routine, RoutineAssert> routines(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getRoutines(getSchema(schemaName)),
@@ -85,8 +83,7 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Sequence, SequenceAssert> sequences(
-            String schemaName) {
+    public ListableNamedObjectAssert<Sequence, SequenceAssert> sequences(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getSequences(getSchema(schemaName)),
@@ -100,8 +97,7 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Synonym, SynonymAssert> synonyms(
-            String schemaName) {
+    public ListableNamedObjectAssert<Synonym, SynonymAssert> synonyms(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getSynonyms(getSchema(schemaName)),
