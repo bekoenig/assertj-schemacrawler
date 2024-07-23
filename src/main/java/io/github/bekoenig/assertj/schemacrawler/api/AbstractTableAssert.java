@@ -132,44 +132,37 @@ public abstract class AbstractTableAssert<
     }
 
     public PrimaryKeyAssert alternateKey(String name) {
-        return extracting(x -> x.lookupAlternateKey(name)
-                .orElse(null))
+        return extracting(x -> x.lookupAlternateKey(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.primaryKey());
     }
 
     public ColumnAssert column(String name) {
-        return extracting(x -> x.lookupColumn(name)
-                .orElse(null))
+        return extracting(x -> x.lookupColumn(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.column());
     }
 
     public ForeignKeyAssert foreignKey(String name) {
-        return extracting(x -> x.lookupForeignKey(name)
-                .orElse(null))
+        return extracting(x -> x.lookupForeignKey(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.foreignKey());
     }
 
     public IndexAssert index(String name) {
-        return extracting(x -> x.lookupIndex(name)
-                .orElse(null))
+        return extracting(x -> x.lookupIndex(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.index());
     }
 
     public PrivilegeAssert privilege(String name) {
-        return extracting(x -> x.lookupPrivilege(name)
-                .orElse(null))
+        return extracting(x -> x.lookupPrivilege(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.privilege());
     }
 
     public TableConstraintAssert tableConstraint(String name) {
-        return extracting(x -> x.lookupTableConstraint(name)
-                .orElse(null))
+        return extracting(x -> x.lookupTableConstraint(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.tableConstraint());
     }
 
     public TriggerAssert trigger(String name) {
-        return extracting(x -> x.lookupTrigger(name)
-                .orElse(null))
+        return extracting(x -> x.lookupTrigger(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.trigger());
     }
 
