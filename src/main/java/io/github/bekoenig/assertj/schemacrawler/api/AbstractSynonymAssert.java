@@ -12,8 +12,8 @@ public abstract class AbstractSynonymAssert<SELF extends AbstractSynonymAssert<S
         super(actual, selfType);
     }
 
-    public SELF satisfiesReferencedObject(Consumer<DatabaseObject> requirements) {
-        extracting(Synonym::getReferencedObject).satisfies(requirements);
+    public SELF satisfiesReferencedObject(Consumer<DatabaseObject> requirement) {
+        extracting(Synonym::getReferencedObject).satisfies(requirement);
         return myself;
     }
 
