@@ -1,6 +1,6 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.AbstractObjectAssert;
+import org.assertj.core.api.AbstractComparableAssert;
 import schemacrawler.schema.NamedObject;
 import schemacrawler.schema.NamedObjectKey;
 
@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 
 public abstract class AbstractNamedObjectAssert<
         SELF extends AbstractNamedObjectAssert<SELF, ACTUAL>, ACTUAL extends NamedObject>
-        extends AbstractObjectAssert<SELF, ACTUAL> {
+        extends AbstractComparableAssert<SELF, ACTUAL> {
 
     protected AbstractNamedObjectAssert(ACTUAL actual, Class<?> selfType) {
         super(actual, selfType);

@@ -1,13 +1,13 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.AbstractObjectAssert;
+import org.assertj.core.api.AbstractComparableAssert;
 import schemacrawler.schema.Column;
 import schemacrawler.schema.ColumnReference;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class AbstractColumnReferenceAssert<SELF extends AbstractColumnReferenceAssert<SELF>> extends AbstractObjectAssert<SELF, ColumnReference> {
+public class AbstractColumnReferenceAssert<SELF extends AbstractColumnReferenceAssert<SELF>> extends AbstractComparableAssert<SELF, ColumnReference> {
 
     public AbstractColumnReferenceAssert(ColumnReference columnReference, Class<?> selfType) {
         super(columnReference, selfType);
