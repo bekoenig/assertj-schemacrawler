@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 public class AbstractIndexColumnAssert<SELF extends AbstractIndexColumnAssert<SELF>>
         extends AbstractKeyColumnAssert<SELF, IndexColumn> {
 
-    AbstractIndexColumnAssert(IndexColumn actual, Class<?> selfType) {
+    protected AbstractIndexColumnAssert(IndexColumn actual, Class<?> selfType) {
         super(actual, selfType);
     }
 

@@ -11,7 +11,7 @@ public class AbstractGrantAssert<
         ACTUAL extends Grant<? extends DatabaseObject>>
         extends AbstractComparableAssert<SELF, ACTUAL> {
 
-    public AbstractGrantAssert(ACTUAL actual, Class<?> selfType) {
+    protected AbstractGrantAssert(ACTUAL actual, Class<?> selfType) {
         super(actual, selfType);
     }
 
