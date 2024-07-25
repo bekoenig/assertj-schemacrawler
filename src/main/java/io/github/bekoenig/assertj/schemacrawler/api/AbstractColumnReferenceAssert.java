@@ -9,8 +9,8 @@ import java.util.function.Predicate;
 
 public class AbstractColumnReferenceAssert<SELF extends AbstractColumnReferenceAssert<SELF>> extends AbstractComparableAssert<SELF, ColumnReference> {
 
-    public AbstractColumnReferenceAssert(ColumnReference columnReference, Class<?> selfType) {
-        super(columnReference, selfType);
+    public AbstractColumnReferenceAssert(ColumnReference actual, Class<?> selfType) {
+        super(actual, selfType);
     }
 
     public SELF satisfiesForeignKeyColumn(Consumer<Column> requirement) {

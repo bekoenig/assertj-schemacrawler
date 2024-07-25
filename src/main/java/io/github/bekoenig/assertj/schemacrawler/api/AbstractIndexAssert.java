@@ -7,8 +7,8 @@ import java.util.function.Predicate;
 public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>>
         extends AbstractDependantObjectAssert<SELF, Index> {
 
-    protected AbstractIndexAssert(Index indexColumns, Class<?> selfType) {
-        super(indexColumns, selfType);
+    protected AbstractIndexAssert(Index actual, Class<?> selfType) {
+        super(actual, selfType);
     }
 
     public SELF matchesCardinality(Predicate<Long> predicate) {
