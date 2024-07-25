@@ -45,12 +45,12 @@ public class SchemaCrawlerAssertions {
         return new PrivilegeAssert(actual);
     }
 
-    public static RoutineParameterAssert assertThat(RoutineParameter<?> actual) {
-        return new RoutineParameterAssert(actual);
-    }
-
     public static RoutineAssert assertThat(Routine actual) {
         return new RoutineAssert(actual);
+    }
+
+    public static RoutineParameterAssert assertThat(RoutineParameter<?> actual) {
+        return new RoutineParameterAssert(actual);
     }
 
     public static SchemaAssert assertThat(Schema actual) {
