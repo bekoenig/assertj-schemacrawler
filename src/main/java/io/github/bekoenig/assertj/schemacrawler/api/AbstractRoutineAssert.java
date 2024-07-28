@@ -13,7 +13,7 @@ public class AbstractRoutineAssert<
         super(actual, selfType);
     }
 
-    public ListableNamedObjectAssert<RoutineParameter<?>, RoutineParameterAssert> parameters() {
+    public <C extends RoutineParameter<P>, P extends Routine> ListableNamedObjectAssert<C, RoutineParameterAssert<C, P>> parameters() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getParameters(),

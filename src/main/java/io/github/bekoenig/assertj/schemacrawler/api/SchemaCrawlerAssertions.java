@@ -25,8 +25,8 @@ public class SchemaCrawlerAssertions {
         return new ForeignKeyAssert(actual);
     }
 
-    public static GrantAssert assertThat(Grant<?> actual) {
-        return new GrantAssert(actual);
+    public static <PARENT extends DatabaseObject> GrantAssert<PARENT> assertThat(Grant<PARENT> actual) {
+        return new GrantAssert<>(actual);
     }
 
     public static IndexAssert assertThat(Index actual) {
@@ -41,16 +41,16 @@ public class SchemaCrawlerAssertions {
         return new PrimaryKeyAssert(actual);
     }
 
-    public static PrivilegeAssert assertThat(Privilege<?> actual) {
-        return new PrivilegeAssert(actual);
+    public static <PARENT extends DatabaseObject> PrivilegeAssert<PARENT> assertThat(Privilege<PARENT> actual) {
+        return new PrivilegeAssert<>(actual);
     }
 
     public static RoutineAssert assertThat(Routine actual) {
         return new RoutineAssert(actual);
     }
 
-    public static RoutineParameterAssert assertThat(RoutineParameter<?> actual) {
-        return new RoutineParameterAssert(actual);
+    public static <ACTUAL extends RoutineParameter<PARENT>, PARENT extends Routine> RoutineParameterAssert<ACTUAL, PARENT> assertThat(ACTUAL actual) {
+        return new RoutineParameterAssert<>(actual);
     }
 
     public static SchemaAssert assertThat(Schema actual) {

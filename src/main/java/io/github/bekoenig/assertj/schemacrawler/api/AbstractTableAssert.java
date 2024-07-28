@@ -74,7 +74,7 @@ public abstract class AbstractTableAssert<
         return myself;
     }
 
-    public ListableNamedObjectAssert<Privilege<?>, PrivilegeAssert> privileges() {
+    public ListableNamedObjectAssert<Privilege<Table>, PrivilegeAssert<Table>> privileges() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getPrivileges(),
@@ -152,8 +152,9 @@ public abstract class AbstractTableAssert<
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.index());
     }
 
-    public PrivilegeAssert privilege(String name) {
-        return extracting(x -> x.lookupPrivilege(name).orElse(null))
+    @SuppressWarnings("unchecked")
+    public PrivilegeAssert<Table> privilege(String name) {
+        return (PrivilegeAssert<Table>) extracting(x -> x.lookupPrivilege(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.privilege());
     }
 

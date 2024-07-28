@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import schemacrawler.schema.Column;
 import schemacrawler.schema.ColumnDataType;
+import schemacrawler.schema.Table;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -54,6 +55,21 @@ class ColumnAssertTest {
                 .isInstanceOf(AssertionError.class)
                 .message()
                 .contains("Expecting actual not to be null");
+    }
+
+    @Test
+    void parent() {
+        // GIVEN
+        Column column = mock(Column.class);
+        Table table = mock(Table.class);
+        when(column.getParent()).thenReturn(table);
+        when(column.getParent()).thenReturn(table);
+
+        // WHEN
+        ColumnAssert columnAssert = SchemaCrawlerAssertions.assertThat(column);
+
+        // THEN
+        columnAssert.parent();
     }
 
 }

@@ -1,6 +1,7 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
 import io.github.bekoenig.assertj.schemacrawler.internal.NamedObjectUtils;
+import schemacrawler.schema.Table;
 import schemacrawler.schema.TableConstraint;
 import schemacrawler.schema.TableConstraintColumn;
 import schemacrawler.schema.TableConstraintType;
@@ -10,7 +11,7 @@ import java.util.function.Predicate;
 public abstract class AbstractTableConstraintAssert<
         SELF extends AbstractTableConstraintAssert<SELF, ACTUAL>,
         ACTUAL extends TableConstraint>
-        extends AbstractDependantObjectAssert<SELF, ACTUAL> {
+        extends AbstractDependantObjectAssert<SELF, ACTUAL, Table> {
 
     protected AbstractTableConstraintAssert(ACTUAL actual, Class<?> selfType) {
         super(actual, selfType);

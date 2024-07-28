@@ -26,8 +26,8 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
         return new InstanceOfAssertFactory<>(ForeignKey.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    @SuppressWarnings("rawtypes")
-    static InstanceOfAssertFactory<Grant, GrantAssert> grant() {
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    static InstanceOfAssertFactory<Grant, GrantAssert<? extends DatabaseObject>> grant() {
         return new InstanceOfAssertFactory<>(Grant.class, SchemaCrawlerAssertions::assertThat);
     }
 
@@ -43,8 +43,8 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
         return new InstanceOfAssertFactory<>(PrimaryKey.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    @SuppressWarnings("rawtypes")
-    static InstanceOfAssertFactory<Privilege, PrivilegeAssert> privilege() {
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    static InstanceOfAssertFactory<Privilege, PrivilegeAssert<? extends DatabaseObject>> privilege() {
         return new InstanceOfAssertFactory<>(Privilege.class, SchemaCrawlerAssertions::assertThat);
     }
 
@@ -52,8 +52,8 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
         return new InstanceOfAssertFactory<>(Routine.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    @SuppressWarnings("rawtypes")
-    static InstanceOfAssertFactory<RoutineParameter, RoutineParameterAssert> routineParameter() {
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    static InstanceOfAssertFactory<RoutineParameter, RoutineParameterAssert<? extends RoutineParameter<Routine>, Routine>> routineParameter() {
         return new InstanceOfAssertFactory<>(RoutineParameter.class, SchemaCrawlerAssertions::assertThat);
     }
 

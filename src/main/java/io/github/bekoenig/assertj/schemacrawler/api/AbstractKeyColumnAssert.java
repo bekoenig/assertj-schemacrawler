@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 public abstract class AbstractKeyColumnAssert<
         SELF extends AbstractKeyColumnAssert<SELF, ACTUAL>,
         ACTUAL extends Column>
-        extends AbstractDependantObjectAssert<SELF, ACTUAL> {
+        extends AbstractDependantObjectAssert<SELF, ACTUAL, Table> {
 
     protected AbstractKeyColumnAssert(ACTUAL actual, Class<?> selfType) {
         super(actual, selfType);
@@ -34,7 +34,7 @@ public abstract class AbstractKeyColumnAssert<
         return myself;
     }
 
-    public ListableNamedObjectAssert<Privilege<?>, PrivilegeAssert> privileges() {
+    public ListableNamedObjectAssert<Privilege<Column>, PrivilegeAssert<Column>> privileges() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getPrivileges(),
@@ -97,8 +97,9 @@ public abstract class AbstractKeyColumnAssert<
         return returns(expected, Column::isPartOfUniqueIndex);
     }
 
-    public PrivilegeAssert privilege(String name) {
-        return extracting(x -> x.lookupPrivilege(name))
+    @SuppressWarnings("unchecked")
+    public PrivilegeAssert<Column> privilege(String name) {
+        return (PrivilegeAssert<Column>) extracting(x -> x.lookupPrivilege(name))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.privilege());
     }
 

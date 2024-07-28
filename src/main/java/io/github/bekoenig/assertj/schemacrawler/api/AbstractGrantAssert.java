@@ -7,8 +7,9 @@ import schemacrawler.schema.Grant;
 import java.util.function.Predicate;
 
 public class AbstractGrantAssert<
-        SELF extends AbstractGrantAssert<SELF, ACTUAL>,
-        ACTUAL extends Grant<? extends DatabaseObject>>
+        SELF extends AbstractGrantAssert<SELF, ACTUAL, PARENT>,
+        ACTUAL extends Grant<PARENT>,
+        PARENT extends DatabaseObject>
         extends AbstractComparableAssert<SELF, ACTUAL> {
 
     protected AbstractGrantAssert(ACTUAL actual, Class<?> selfType) {

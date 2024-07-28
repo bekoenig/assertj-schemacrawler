@@ -1,14 +1,12 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import schemacrawler.schema.Column;
-import schemacrawler.schema.ColumnDataType;
-import schemacrawler.schema.Privilege;
+import schemacrawler.schema.*;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SELF>>
-        extends AbstractBaseColumnAssert<SELF, Column> {
+        extends AbstractBaseColumnAssert<SELF, Column, Table> {
 
     protected AbstractColumnAssert(Column actual, Class<?> selfType) {
         super(actual, selfType);
@@ -19,7 +17,7 @@ public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SEL
         return myself;
     }
 
-    public ListableNamedObjectAssert<Privilege<?>, PrivilegeAssert> privileges() {
+    public ListableNamedObjectAssert<Privilege<Column>, PrivilegeAssert<Column>> privileges() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getPrivileges(),

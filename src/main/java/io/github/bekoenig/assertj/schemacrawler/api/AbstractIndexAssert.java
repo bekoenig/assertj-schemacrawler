@@ -5,7 +5,7 @@ import schemacrawler.schema.*;
 import java.util.function.Predicate;
 
 public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>>
-        extends AbstractDependantObjectAssert<SELF, Index> {
+        extends AbstractDependantObjectAssert<SELF, Index, Table> {
 
     protected AbstractIndexAssert(Index actual, Class<?> selfType) {
         super(actual, selfType);
