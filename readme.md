@@ -1,7 +1,7 @@
 # AssertJ SchemaCrawler - Fluent Assertions for SchemaCrawler
 
 ## Motivation
-Writing junit tests with schema crawler is powerful to check the consistency of 
+Writing junit tests with [SchemaCrawler](https://github.com/schemacrawler/) is powerful to check the consistency of 
 a data model change executed using some database migrator like flyway or
 liquibase. The catalog api is well designed but also very complex. So it's hard
 to getting in and the resulting assertion code has a lot of boilerplate and
