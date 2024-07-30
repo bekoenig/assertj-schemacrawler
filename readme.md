@@ -53,6 +53,8 @@ table.tableConstraint("EXAMPLE_ENTITY1_PK")
 
 ## Getting Started
 
+Crawl the database catalog using the java library (see [how to](https://www.schemacrawler.com/how-to.html#api) ).
+
 Include 
 
 ```
