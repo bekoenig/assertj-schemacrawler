@@ -106,6 +106,6 @@ The assert methods follow this naming pattern:
 ## Compatibility 
 
 Even if this library is a standalone project (see [SchemaCrawler Issue 1544]
-(https://github.com/schemacrawler/SchemaCrawler/issues/1544)) the goal is to
+(https://github.com/schemacrawler/SchemaCrawler/issues/1544) ) the goal is to
 provide a maximum compatibility to the latest version of schema crawler using
 state of the art coding style of assertj.
