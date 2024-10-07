@@ -36,7 +36,7 @@
 
         <schemacrawler.version>16.22.2</schemacrawler.version>
         <assertj.version>3.26.3</assertj.version>
-        <junit.version>2.2.0</junit.version>
+        <junit.version>2.3.0</junit.version>
         <mockito.version>5.14.1</mockito.version>
     </properties>
 
