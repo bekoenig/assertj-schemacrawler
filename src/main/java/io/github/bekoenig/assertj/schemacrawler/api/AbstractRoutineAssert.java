@@ -41,7 +41,7 @@ public class AbstractRoutineAssert<
         return myself;
     }
 
-    public RoutineParameterAssert parameter(String name) {
+    public RoutineParameterAssert<?, ?> parameter(String name) {
         return extracting(x -> x.lookupParameter(name).orElse(null))
                 .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.routineParameter());
     }
