@@ -4,6 +4,7 @@ import org.assertj.core.api.*;
 import schemacrawler.schema.*;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,14 +22,14 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
         return schema.get();
     }
 
-    public ListableNamedObjectAssert<ColumnDataType, ColumnDataTypeAssert> columnDataTypes() {
+    public ListableNamedObjectAssert<?, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getColumnDataTypes(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<ColumnDataType, ColumnDataTypeAssert> columnDataTypes(String schemaName) {
+    public ListableNamedObjectAssert<?, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getColumnDataTypes(getSchema(schemaName)),
@@ -55,70 +56,70 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
                 .asInstanceOf(InstanceOfAssertFactories.type(CrawlInfo.class));
     }
 
-    public ListableNamedObjectAssert<Routine, RoutineAssert> routines() {
+    public ListableNamedObjectAssert<?, List<Routine>, Routine, RoutineAssert> routines() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getRoutines(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Routine, RoutineAssert> routines(String schemaName) {
+    public ListableNamedObjectAssert<?, List<Routine>, Routine, RoutineAssert> routines(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getRoutines(getSchema(schemaName)),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Schema, SchemaAssert> schemas() {
+    public ListableNamedObjectAssert<?, List<Schema>, Schema, SchemaAssert> schemas() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getSchemas(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Sequence, SequenceAssert> sequences() {
+    public ListableNamedObjectAssert<?, List<Sequence>, Sequence, SequenceAssert> sequences() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getSequences(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Sequence, SequenceAssert> sequences(String schemaName) {
+    public ListableNamedObjectAssert<?, List<Sequence>, Sequence, SequenceAssert> sequences(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getSequences(getSchema(schemaName)),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Synonym, SynonymAssert> synonyms() {
+    public ListableNamedObjectAssert<?, List<Synonym>, Synonym, SynonymAssert> synonyms() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getSynonyms(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Synonym, SynonymAssert> synonyms(String schemaName) {
+    public ListableNamedObjectAssert<?, List<Synonym>, Synonym, SynonymAssert> synonyms(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getSynonyms(getSchema(schemaName)),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<ColumnDataType, ColumnDataTypeAssert> systemColumnDataTypes() {
+    public ListableNamedObjectAssert<?, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> systemColumnDataTypes() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getSystemColumnDataTypes(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Table, TableAssert> tables() {
+    public ListableNamedObjectAssert<?, List<Table>, Table, TableAssert> tables() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getTables(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<Table, TableAssert> tables(String schemaName) {
+    public ListableNamedObjectAssert<?, List<Table>, Table, TableAssert> tables(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getTables(getSchema(schemaName)),

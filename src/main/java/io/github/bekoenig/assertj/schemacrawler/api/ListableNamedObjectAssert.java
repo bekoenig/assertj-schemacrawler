@@ -11,19 +11,19 @@ import java.util.List;
 import java.util.Objects;
 
 public class ListableNamedObjectAssert<
+        SELF extends FactoryBasedNavigableListAssert<SELF, ACTUAL, ELEMENT, ELEMENT_ASSERT>,
+        ACTUAL extends List<? extends ELEMENT>,
         ELEMENT extends NamedObject,
         ELEMENT_ASSERT extends AbstractAssert<ELEMENT_ASSERT, ELEMENT>>
-        extends FactoryBasedNavigableListAssert<
-        ListableNamedObjectAssert<ELEMENT, ELEMENT_ASSERT>,
-        List<ELEMENT>, ELEMENT, ELEMENT_ASSERT> {
+        extends FactoryBasedNavigableListAssert<SELF, ACTUAL, ELEMENT, ELEMENT_ASSERT> {
 
-    @SuppressWarnings("unchecked")
-    public ListableNamedObjectAssert(List<? extends ELEMENT> elements, AssertFactory<ELEMENT, ELEMENT_ASSERT> assertFactory) {
-        super((List<ELEMENT>) elements, ListableNamedObjectAssert.class, assertFactory);
+    public ListableNamedObjectAssert(ACTUAL elements, AssertFactory<ELEMENT, ELEMENT_ASSERT> assertFactory) {
+        super(elements, FactoryBasedNavigableListAssert.class, assertFactory);
     }
 
+    @SuppressWarnings("unchecked")
     public ListableNamedObjectAssert(Collection<? extends ELEMENT> elements, AssertFactory<ELEMENT, ELEMENT_ASSERT> assertFactory) {
-        super(new ArrayList<>(elements), ListableNamedObjectAssert.class, assertFactory);
+        super((ACTUAL) new ArrayList<>(elements), FactoryBasedNavigableListAssert.class, assertFactory);
     }
 
     public ELEMENT_ASSERT get(String name) {

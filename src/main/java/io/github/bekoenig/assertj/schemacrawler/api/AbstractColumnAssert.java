@@ -2,6 +2,7 @@ package io.github.bekoenig.assertj.schemacrawler.api;
 
 import schemacrawler.schema.*;
 
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -17,7 +18,7 @@ public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SEL
         return myself;
     }
 
-    public ListableNamedObjectAssert<Privilege<Column>, PrivilegeAssert<Column>> privileges() {
+    public ListableNamedObjectAssert<?, List<Privilege<Column>>, Privilege<Column>, PrivilegeAssert<Column>> privileges() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getPrivileges(),

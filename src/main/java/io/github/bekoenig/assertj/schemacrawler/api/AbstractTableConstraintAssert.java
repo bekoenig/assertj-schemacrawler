@@ -6,6 +6,7 @@ import schemacrawler.schema.TableConstraint;
 import schemacrawler.schema.TableConstraintColumn;
 import schemacrawler.schema.TableConstraintType;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 public abstract class AbstractTableConstraintAssert<
@@ -17,7 +18,7 @@ public abstract class AbstractTableConstraintAssert<
         super(actual, selfType);
     }
 
-    public ListableNamedObjectAssert<TableConstraintColumn, TableConstraintColumnAssert> constrainedColumns() {
+    public ListableNamedObjectAssert<?, List<TableConstraintColumn>, TableConstraintColumn, TableConstraintColumnAssert> constrainedColumns() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getConstrainedColumns(),

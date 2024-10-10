@@ -2,6 +2,7 @@ package io.github.bekoenig.assertj.schemacrawler.api;
 
 import schemacrawler.schema.*;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 public class AbstractRoutineAssert<
@@ -13,7 +14,7 @@ public class AbstractRoutineAssert<
         super(actual, selfType);
     }
 
-    public <C extends RoutineParameter<P>, P extends Routine> ListableNamedObjectAssert<C, RoutineParameterAssert<C, P>> parameters() {
+    public <C extends RoutineParameter<P>, P extends Routine> ListableNamedObjectAssert<?, List<C>, C, RoutineParameterAssert<C, P>> parameters() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getParameters(),

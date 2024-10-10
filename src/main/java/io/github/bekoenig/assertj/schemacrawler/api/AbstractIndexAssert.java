@@ -2,6 +2,7 @@ package io.github.bekoenig.assertj.schemacrawler.api;
 
 import schemacrawler.schema.*;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>>
@@ -16,7 +17,7 @@ public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>
         return myself;
     }
 
-    public ListableNamedObjectAssert<IndexColumn, IndexColumnAssert> columns() {
+    public ListableNamedObjectAssert<?, List<IndexColumn>, IndexColumn, IndexColumnAssert> columns() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getColumns(),
