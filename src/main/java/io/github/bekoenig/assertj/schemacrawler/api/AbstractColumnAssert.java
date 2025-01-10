@@ -18,7 +18,8 @@ public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SEL
         return myself;
     }
 
-    public ListableNamedObjectAssert<?, List<Privilege<Column>>, Privilege<Column>, PrivilegeAssert<Column>> privileges() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Privilege<Column>>, Privilege<Column>, PrivilegeAssert<Column>>>
+    ListableNamedObjectAssert<MY_SELF, List<Privilege<Column>>, Privilege<Column>, PrivilegeAssert<Column>> privileges() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getPrivileges(),

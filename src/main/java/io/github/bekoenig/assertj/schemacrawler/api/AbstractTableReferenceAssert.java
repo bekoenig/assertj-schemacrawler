@@ -18,7 +18,8 @@ public abstract class AbstractTableReferenceAssert<
         super(actual, selfType);
     }
 
-    public FactoryBasedNavigableListAssert<?, List<ColumnReference>, ColumnReference, ColumnReferenceAssert> columnReferences() {
+    public <MY_SELF extends FactoryBasedNavigableListAssert<MY_SELF, List<ColumnReference>, ColumnReference, ColumnReferenceAssert>>
+    FactoryBasedNavigableListAssert<MY_SELF, List<ColumnReference>, ColumnReference, ColumnReferenceAssert> columnReferences() {
         return new FactoryBasedNavigableListAssert<>(
                 actual.getColumnReferences(),
                 FactoryBasedNavigableListAssert.class, SchemaCrawlerAssertions::assertThat);

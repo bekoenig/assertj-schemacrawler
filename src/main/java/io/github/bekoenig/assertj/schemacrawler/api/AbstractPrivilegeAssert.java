@@ -17,7 +17,8 @@ public abstract class AbstractPrivilegeAssert<
         super(actual, selfType);
     }
 
-    public FactoryBasedNavigableIterableAssert<?, Collection<? extends Grant<PARENT>>, Grant<PARENT>, GrantAssert<PARENT>> parameters() {
+    public <MY_SELF extends FactoryBasedNavigableIterableAssert<MY_SELF, Collection<? extends Grant<PARENT>>, Grant<PARENT>, GrantAssert<PARENT>>>
+    FactoryBasedNavigableIterableAssert<MY_SELF, Collection<? extends Grant<PARENT>>, Grant<PARENT>, GrantAssert<PARENT>> parameters() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
                 actual.getGrants(),

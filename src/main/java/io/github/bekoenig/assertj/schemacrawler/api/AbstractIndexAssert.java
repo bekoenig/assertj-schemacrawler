@@ -17,7 +17,8 @@ public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>
         return myself;
     }
 
-    public ListableNamedObjectAssert<?, List<IndexColumn>, IndexColumn, IndexColumnAssert> columns() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<IndexColumn>, IndexColumn, IndexColumnAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<IndexColumn>, IndexColumn, IndexColumnAssert> columns() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getColumns(),

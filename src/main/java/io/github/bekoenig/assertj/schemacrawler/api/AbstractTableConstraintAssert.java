@@ -18,7 +18,8 @@ public abstract class AbstractTableConstraintAssert<
         super(actual, selfType);
     }
 
-    public ListableNamedObjectAssert<?, List<TableConstraintColumn>, TableConstraintColumn, TableConstraintColumnAssert> constrainedColumns() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<TableConstraintColumn>, TableConstraintColumn, TableConstraintColumnAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<TableConstraintColumn>, TableConstraintColumn, TableConstraintColumnAssert> constrainedColumns() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getConstrainedColumns(),

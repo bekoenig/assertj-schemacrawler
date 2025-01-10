@@ -25,7 +25,7 @@ class ListableNamedObjectAssertTest {
     }
 
     @Test
-    void cast_toFactoryBasedNavigableListAssert() {
+    void cast_toListableNamedObjectAssert() {
         // GIVEN
         Table table = mock();
         when(table.getIndexes()).thenReturn(List.of());
@@ -34,6 +34,22 @@ class ListableNamedObjectAssertTest {
         SchemaCrawlerAssertions.assertThat(table)
                 .indexes()
                 .filteredOn(idx -> !idx.isUnique()).isEmpty();
+    }
+
+    @Test
+    void keepsSelfBounded() {
+        // GIVEN
+        Table table = mock();
+        Index index = mock();
+        when(index.getName()).thenReturn("some_index");
+        when(table.getIndexes()).thenReturn(List.of(index));
+
+        // WHEN // THEN
+        SchemaCrawlerAssertions.assertThat(table)
+                .indexes()
+                .hasSize(1)
+                .get("some_index")
+                .isNotNull();
     }
 
 }

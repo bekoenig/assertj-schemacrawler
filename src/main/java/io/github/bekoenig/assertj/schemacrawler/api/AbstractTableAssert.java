@@ -15,14 +15,16 @@ public abstract class AbstractTableAssert<
         super(actual, selfType);
     }
 
-    public ListableNamedObjectAssert<?, List<PrimaryKey>, PrimaryKey, PrimaryKeyAssert> alternateKeys() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<PrimaryKey>, PrimaryKey, PrimaryKeyAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<PrimaryKey>, PrimaryKey, PrimaryKeyAssert> alternateKeys() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getAlternateKeys(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<?, List<Column>, Column, ColumnAssert> columns() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Column>, Column, ColumnAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<Column>, Column, ColumnAssert> columns() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getColumns(),
@@ -34,35 +36,40 @@ public abstract class AbstractTableAssert<
         return myself;
     }
 
-    public ListableNamedObjectAssert<?, List<ForeignKey>, ForeignKey, ForeignKeyAssert> exportedForeignKeys() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<ForeignKey>, ForeignKey, ForeignKeyAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<ForeignKey>, ForeignKey, ForeignKeyAssert> exportedForeignKeys() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getExportedForeignKeys(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<?, List<ForeignKey>, ForeignKey, ForeignKeyAssert> foreignKeys() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<ForeignKey>, ForeignKey, ForeignKeyAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<ForeignKey>, ForeignKey, ForeignKeyAssert> foreignKeys() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getForeignKeys(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<?, List<Column>, Column, ColumnAssert> hiddenColumns() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Column>, Column, ColumnAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<Column>, Column, ColumnAssert> hiddenColumns() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getHiddenColumns(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<?, List<ForeignKey>, ForeignKey, ForeignKeyAssert> importedForeignKeys() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<ForeignKey>, ForeignKey, ForeignKeyAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<ForeignKey>, ForeignKey, ForeignKeyAssert> importedForeignKeys() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getImportedForeignKeys(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<?, List<Index>, Index, IndexAssert> indexes() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Index>, Index, IndexAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<Index>, Index, IndexAssert> indexes() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getIndexes(),
@@ -75,14 +82,16 @@ public abstract class AbstractTableAssert<
         return myself;
     }
 
-    public ListableNamedObjectAssert<?, List<Privilege<Table>>, Privilege<Table>, PrivilegeAssert<Table>> privileges() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Privilege<Table>>, Privilege<Table>, PrivilegeAssert<Table>>>
+    ListableNamedObjectAssert<MY_SELF, List<Privilege<Table>>, Privilege<Table>, PrivilegeAssert<Table>> privileges() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getPrivileges(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<?, List<Table>, Table, TableAssert> relatedTables(
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Table>, Table, TableAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<Table>, Table, TableAssert> relatedTables(
             TableRelationshipType tableRelationshipType) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
@@ -90,7 +99,8 @@ public abstract class AbstractTableAssert<
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public ListableNamedObjectAssert<?, List<TableConstraint>, TableConstraint, TableConstraintAssert> tableConstraints() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<TableConstraint>, TableConstraint, TableConstraintAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<TableConstraint>, TableConstraint, TableConstraintAssert> tableConstraints() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getTableConstraints(),
@@ -102,7 +112,8 @@ public abstract class AbstractTableAssert<
         return myself;
     }
 
-    public ListableNamedObjectAssert<?, List<Trigger>, Trigger, TriggerAssert> triggers() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Trigger>, Trigger, TriggerAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<Trigger>, Trigger, TriggerAssert> triggers() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getTriggers(),
@@ -114,7 +125,8 @@ public abstract class AbstractTableAssert<
         return myself;
     }
 
-    public ListableNamedObjectAssert<?, List<TableReference>, TableReference, TableReferenceAssert> weakAssociation() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<TableReference>, TableReference, TableReferenceAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<TableReference>, TableReference, TableReferenceAssert> weakAssociation() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getWeakAssociations(),

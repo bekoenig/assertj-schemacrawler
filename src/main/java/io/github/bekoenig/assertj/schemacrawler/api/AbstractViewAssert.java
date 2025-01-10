@@ -20,7 +20,8 @@ public abstract class AbstractViewAssert<SELF extends AbstractViewAssert<SELF>>
         return myself;
     }
 
-    public FactoryBasedNavigableIterableAssert<?, Collection<Table>, Table, TableAssert> tableUsage() {
+    public <MY_SELF extends FactoryBasedNavigableIterableAssert<MY_SELF, Collection<Table>, Table, TableAssert>>
+    FactoryBasedNavigableIterableAssert<MY_SELF, Collection<Table>, Table, TableAssert> tableUsage() {
         isNotNull();
         return new FactoryBasedNavigableIterableAssert<>(
                 actual.getTableUsage(),
