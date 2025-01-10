@@ -22,14 +22,16 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
         return schema.get();
     }
 
-    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert>> ListableNamedObjectAssert<MY_SELF, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes() {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes() {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getColumnDataTypes(),
                 SchemaCrawlerAssertions::assertThat);
     }
 
-    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert>> ListableNamedObjectAssert<MY_SELF, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes(String schemaName) {
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<ColumnDataType>, ColumnDataType, ColumnDataTypeAssert> columnDataTypes(String schemaName) {
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getColumnDataTypes(getSchema(schemaName)),
