@@ -10,7 +10,7 @@ import schemacrawler.schema.JdbcDriverInfo;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class AbstractCatalogAssertTest {
+class CatalogAssertTest {
 
     @Test
     void crawlInfo() {
