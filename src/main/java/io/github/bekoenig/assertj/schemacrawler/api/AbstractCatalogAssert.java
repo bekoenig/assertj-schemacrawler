@@ -43,9 +43,9 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
                 .asInstanceOf(InstanceOfAssertFactories.type(CrawlInfo.class));
     }
 
-    public ObjectAssert<CrawlInfo> databaseInfo() {
+    public ObjectAssert<DatabaseInfo> databaseInfo() {
         return extracting(Catalog::getDatabaseInfo)
-                .asInstanceOf(InstanceOfAssertFactories.type(CrawlInfo.class));
+                .asInstanceOf(InstanceOfAssertFactories.type(DatabaseInfo.class));
     }
 
     public AbstractCollectionAssert<?, Collection<? extends DatabaseUser>, DatabaseUser, ObjectAssert<DatabaseUser>> databaseUsers() {
@@ -53,9 +53,9 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
                 .asInstanceOf(InstanceOfAssertFactories.collection(DatabaseUser.class));
     }
 
-    public ObjectAssert<CrawlInfo> jdbcDriverInfo() {
+    public ObjectAssert<JdbcDriverInfo> jdbcDriverInfo() {
         return extracting(Catalog::getJdbcDriverInfo)
-                .asInstanceOf(InstanceOfAssertFactories.type(CrawlInfo.class));
+                .asInstanceOf(InstanceOfAssertFactories.type(JdbcDriverInfo.class));
     }
 
     public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Routine>, Routine, RoutineAssert>>
