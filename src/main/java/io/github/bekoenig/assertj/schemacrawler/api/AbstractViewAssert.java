@@ -33,8 +33,8 @@ public abstract class AbstractViewAssert<SELF extends AbstractViewAssert<SELF>>
     }
 
     public TableAssert table(String schemaName, String tableName) {
-        return extracting(x -> x.lookupTable(x.getSchema(), tableName).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.table());
+        return extracting(x -> x.lookupTable(x.getSchema(), tableName).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
 }

@@ -39,23 +39,19 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
     }
 
     public ObjectAssert<CrawlInfo> crawlInfo() {
-        return extracting(Catalog::getCrawlInfo)
-                .asInstanceOf(InstanceOfAssertFactories.type(CrawlInfo.class));
+        return extracting(Catalog::getCrawlInfo, Assertions::assertThat);
     }
 
     public ObjectAssert<DatabaseInfo> databaseInfo() {
-        return extracting(Catalog::getDatabaseInfo)
-                .asInstanceOf(InstanceOfAssertFactories.type(DatabaseInfo.class));
+        return extracting(Catalog::getDatabaseInfo, AssertionsForClassTypes::assertThat);
     }
 
     public AbstractCollectionAssert<?, Collection<? extends DatabaseUser>, DatabaseUser, ObjectAssert<DatabaseUser>> databaseUsers() {
-        return extracting(Catalog::getDatabaseUsers)
-                .asInstanceOf(InstanceOfAssertFactories.collection(DatabaseUser.class));
+        return extracting(Catalog::getDatabaseUsers, Assertions::assertThat);
     }
 
     public ObjectAssert<JdbcDriverInfo> jdbcDriverInfo() {
-        return extracting(Catalog::getJdbcDriverInfo)
-                .asInstanceOf(InstanceOfAssertFactories.type(JdbcDriverInfo.class));
+        return extracting(Catalog::getJdbcDriverInfo, AssertionsForClassTypes::assertThat);
     }
 
     public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Routine>, Routine, RoutineAssert>>
@@ -139,38 +135,38 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
     }
 
     public ColumnAssert column(String schemaName, String tableName, String name) {
-        return extracting(x -> x.lookupColumn(getSchema(schemaName), tableName, name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.column());
+        return extracting(x -> x.lookupColumn(getSchema(schemaName), tableName, name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public ColumnDataTypeAssert columnDataType(String schemaName, String name) {
-        return extracting(x -> x.lookupColumnDataType(getSchema(schemaName), name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.columnDataType());
+        return extracting(x -> x.lookupColumnDataType(getSchema(schemaName), name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
-    public SchemaReferenceAssert schema(String schemaName) {
-        return extracting(x -> x.lookupSchema(schemaName).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.schemaReference());
+    public SchemaAssert schema(String schemaName) {
+        return extracting(x -> x.lookupSchema(schemaName).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public SequenceAssert sequence(String schemaName, String name) {
-        return extracting(x -> x.lookupSequence(getSchema(schemaName), name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.sequence());
+        return extracting(x -> x.lookupSequence(getSchema(schemaName), name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public SynonymAssert synonym(String schemaName, String name) {
-        return extracting(x -> x.lookupSynonym(getSchema(schemaName), name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.synonym());
+        return extracting(x -> x.lookupSynonym(getSchema(schemaName), name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public ColumnDataTypeAssert systemColumnDataType(String name) {
-        return extracting(x -> x.lookupSystemColumnDataType(name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.columnDataType());
+        return extracting(x -> x.lookupSystemColumnDataType(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public TableAssert table(String schemaName, String name) {
-        return extracting(x -> x.lookupTable(getSchema(schemaName), name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.table());
+        return extracting(x -> x.lookupTable(getSchema(schemaName), name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
 }

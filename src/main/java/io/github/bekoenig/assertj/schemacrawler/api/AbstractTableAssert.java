@@ -146,39 +146,38 @@ public abstract class AbstractTableAssert<
     }
 
     public PrimaryKeyAssert alternateKey(String name) {
-        return extracting(x -> x.lookupAlternateKey(name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.primaryKey());
+        return extracting(x -> x.lookupAlternateKey(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public ColumnAssert column(String name) {
-        return extracting(x -> x.lookupColumn(name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.column());
+        return extracting(x -> x.lookupColumn(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public ForeignKeyAssert foreignKey(String name) {
-        return extracting(x -> x.lookupForeignKey(name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.foreignKey());
+        return extracting(x -> x.lookupForeignKey(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public IndexAssert index(String name) {
-        return extracting(x -> x.lookupIndex(name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.index());
+        return extracting(x -> x.lookupIndex(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
-    @SuppressWarnings("unchecked")
     public PrivilegeAssert<Table> privilege(String name) {
-        return (PrivilegeAssert<Table>) extracting(x -> x.lookupPrivilege(name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.privilege());
+        return extracting(x -> x.lookupPrivilege(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public TableConstraintAssert tableConstraint(String name) {
-        return extracting(x -> x.lookupTableConstraint(name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.tableConstraint());
+        return extracting(x -> x.lookupTableConstraint(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public TriggerAssert trigger(String name) {
-        return extracting(x -> x.lookupTrigger(name).orElse(null))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.trigger());
+        return extracting(x -> x.lookupTrigger(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
 }

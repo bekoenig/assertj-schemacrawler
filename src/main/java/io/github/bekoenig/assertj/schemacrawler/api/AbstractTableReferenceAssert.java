@@ -1,6 +1,5 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import io.github.bekoenig.assertj.schemacrawler.internal.NamedObjectUtils;
 import org.assertj.core.api.FactoryBasedNavigableListAssert;
 import schemacrawler.schema.ColumnReference;
 import schemacrawler.schema.Table;
@@ -33,11 +32,6 @@ public abstract class AbstractTableReferenceAssert<
     public SELF satisfiesPrimaryKeyTable(Consumer<Table> requirement) {
         extracting(TableReference::getPrimaryKeyTable).satisfies(requirement);
         return myself;
-    }
-
-    public ColumnReferenceAssert columnReference(String name) {
-        return extracting(x -> NamedObjectUtils.findOne(x.getConstrainedColumns(), name))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.columnReferenceAssert());
     }
 
 }

@@ -27,8 +27,8 @@ public abstract class AbstractTableConstraintAssert<
     }
 
     public TableConstraintColumnAssert constrainedColumn(String columnName) {
-        return extracting(x -> NamedObjectUtils.findOne(x.getConstrainedColumns(), columnName))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.tableConstraintColumn());
+        return extracting(x -> NamedObjectUtils.findOne(x.getConstrainedColumns(), columnName),
+                SchemaCrawlerAssertions::assertThat);
     }
 
     public SELF matchesDefinition(Predicate<String> predicate) {

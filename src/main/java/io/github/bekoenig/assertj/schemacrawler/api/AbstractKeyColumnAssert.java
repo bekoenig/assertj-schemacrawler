@@ -99,10 +99,9 @@ public abstract class AbstractKeyColumnAssert<
         return returns(expected, Column::isPartOfUniqueIndex);
     }
 
-    @SuppressWarnings("unchecked")
     public PrivilegeAssert<Column> privilege(String name) {
-        return (PrivilegeAssert<Column>) extracting(x -> x.lookupPrivilege(name))
-                .asInstanceOf(SchemaCrawlerInstanceOfAssertFactories.privilege());
+        return extracting(x -> x.lookupPrivilege(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
     }
 
 }

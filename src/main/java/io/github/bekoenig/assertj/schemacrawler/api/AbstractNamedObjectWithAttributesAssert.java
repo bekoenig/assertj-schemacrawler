@@ -1,7 +1,7 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
-import org.assertj.core.api.InstanceOfAssertFactories;
-import org.assertj.core.api.OptionalAssert;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.api.ObjectAssert;
 import schemacrawler.schema.AttributedObject;
 import schemacrawler.schema.DescribedObject;
 import schemacrawler.schema.NamedObject;
@@ -17,15 +17,15 @@ public abstract class AbstractNamedObjectWithAttributesAssert<
         super(actual, selfType);
     }
 
-    public <T> SELF matchesAttribute(String name, Class<T> type, Predicate<T> predicate) {
+    public SELF matchesAttribute(String name, Predicate<? super Object> predicate) {
         extracting(x -> x.getAttribute(name))
-                .asInstanceOf(InstanceOfAssertFactories.type(type))
                 .matches(predicate);
         return myself;
     }
 
     public SELF matchesRemarks(Predicate<String> predicate) {
-        extracting(DescribedObject::getRemarks).matches(predicate);
+        extracting(DescribedObject::getRemarks)
+                .matches(predicate);
         return myself;
     }
 
@@ -37,9 +37,8 @@ public abstract class AbstractNamedObjectWithAttributesAssert<
         return returns(false, x -> x.getAttribute(name));
     }
 
-    public <T> OptionalAssert<T> attribute(String name, Class<T> resultType) {
-        return extracting(x -> x.lookupAttribute(name))
-                .asInstanceOf(InstanceOfAssertFactories.optional(resultType));
+    public ObjectAssert<?> attribute(String name) {
+        return extracting(x -> x.lookupAttribute(name).orElse(null), Assertions::assertThat);
     }
 
 }
