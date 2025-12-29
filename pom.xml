@@ -34,7 +34,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <schemacrawler.version>17.1.7</schemacrawler.version>
+        <schemacrawler.version>17.1.7-A</schemacrawler.version>
         <assertj.version>3.27.6</assertj.version>
         <junit.version>2.3.0</junit.version>
         <mockito.version>5.20.0</mockito.version>
