@@ -93,8 +93,4 @@ public class SchemaCrawlerAssertions {
         return new ViewAssert(actual);
     }
 
-    public static WeakAssociationAssert assertThat(WeakAssociation actual) {
-        return new WeakAssociationAssert(actual);
-    }
-
 }

@@ -125,14 +125,6 @@ public abstract class AbstractTableAssert<
         return myself;
     }
 
-    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<TableReference>, TableReference, TableReferenceAssert>>
-    ListableNamedObjectAssert<MY_SELF, List<TableReference>, TableReference, TableReferenceAssert> weakAssociation() {
-        isNotNull();
-        return new ListableNamedObjectAssert<>(
-                actual.getWeakAssociations(),
-                SchemaCrawlerAssertions::assertThat);
-    }
-
     public SELF hasDefinition(boolean expected) {
         return returns(expected, DefinedObject::hasDefinition);
     }

@@ -97,8 +97,4 @@ public interface SchemaCrawlerInstanceOfAssertFactories {
         return new InstanceOfAssertFactory<>(View.class, SchemaCrawlerAssertions::assertThat);
     }
 
-    static InstanceOfAssertFactory<WeakAssociation, WeakAssociationAssert> weakAssociation() {
-        return new InstanceOfAssertFactory<>(WeakAssociation.class, SchemaCrawlerAssertions::assertThat);
-    }
-
 }
