@@ -41,4 +41,8 @@ public class AbstractIndexColumnAssert<SELF extends AbstractIndexColumnAssert<SE
         return returns(expected, IndexColumn::isSignificant);
     }
 
+    public SELF isPartial(boolean expected) {
+        return returns(expected, IndexColumn::isPartial);
+    }
+
 }

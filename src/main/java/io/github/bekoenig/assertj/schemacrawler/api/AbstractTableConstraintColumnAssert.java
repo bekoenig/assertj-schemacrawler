@@ -1,5 +1,6 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
+import schemacrawler.schema.IndexColumn;
 import schemacrawler.schema.TableConstraint;
 import schemacrawler.schema.TableConstraintColumn;
 
@@ -35,6 +36,10 @@ public abstract class AbstractTableConstraintColumnAssert<
 
     public SELF isSignificant(boolean expected) {
         return returns(expected, TableConstraintColumn::isSignificant);
+    }
+
+    public SELF isPartial(boolean expected) {
+        return returns(expected, TableConstraintColumn::isPartial);
     }
 
 }
