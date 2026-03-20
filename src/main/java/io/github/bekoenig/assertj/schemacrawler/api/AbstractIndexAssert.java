@@ -58,4 +58,13 @@ public abstract class AbstractIndexAssert<SELF extends AbstractIndexAssert<SELF>
                 SchemaCrawlerAssertions::assertThat);
     }
 
+    public SELF matchesFilterCondition(Predicate<String> predicate) {
+        extracting(Index::getFilterCondition).matches(predicate);
+        return myself;
+    }
+
+    public SELF hasFilterCondition(boolean expected) {
+        return returns(expected, Index::hasFilterCondition);
+    }
+
 }

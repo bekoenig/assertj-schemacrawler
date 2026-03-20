@@ -1,8 +1,13 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
+import org.assertj.core.api.AbstractCollectionAssert;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.api.ObjectAssert;
 import schemacrawler.schema.*;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class AbstractRoutineAssert<
@@ -40,6 +45,24 @@ public class AbstractRoutineAssert<
     public SELF matchesSpecificName(Predicate<String> predicate) {
         extracting(Routine::getSpecificName).matches(predicate);
         return myself;
+    }
+
+    public SELF matchesDefinition(Predicate<String> predicate) {
+        extracting(Routine::getDefinition).matches(predicate);
+        return myself;
+    }
+
+    public SELF hasDefinition(boolean expected) {
+        return returns(expected, Routine::hasDefinition);
+    }
+
+    public SELF satisfiesType(Consumer<Comparable<?>> requirement) {
+        extracting(Routine::getType).satisfies(requirement);
+        return myself;
+    }
+
+    public AbstractCollectionAssert<?, Collection<? extends DatabaseObject>, DatabaseObject, ObjectAssert<DatabaseObject>> referencedObjects() {
+        return extracting(Routine::getReferencedObjects, Assertions::assertThat);
     }
 
     public RoutineParameterAssert<?, ?> parameter(String name) {

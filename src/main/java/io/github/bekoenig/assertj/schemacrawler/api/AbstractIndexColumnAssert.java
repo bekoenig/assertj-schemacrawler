@@ -29,4 +29,16 @@ public class AbstractIndexColumnAssert<SELF extends AbstractIndexColumnAssert<SE
         return myself;
     }
 
+    public SELF hasDefaultValue(boolean expected) {
+        return returns(expected, IndexColumn::hasDefaultValue);
+    }
+
+    public SELF isPartOfSelfReferencingRelationship(boolean expected) {
+        return returns(expected, IndexColumn::isPartOfSelfReferencingRelationship);
+    }
+
+    public SELF isSignificant(boolean expected) {
+        return returns(expected, IndexColumn::isSignificant);
+    }
+
 }

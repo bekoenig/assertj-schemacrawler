@@ -31,4 +31,8 @@ public class AbstractColumnReferenceAssert<SELF extends AbstractColumnReferenceA
         return myself;
     }
 
+    public SELF isSelfReferencing(boolean expected) {
+        return returns(expected, ColumnReference::isSelfReferencing);
+    }
+
 }

@@ -65,4 +65,21 @@ public abstract class AbstractColumnAssert<SELF extends AbstractColumnAssert<SEL
     public SELF isPartOfUniqueIndex(boolean expected) {
         return returns(expected, Column::isPartOfUniqueIndex);
     }
+
+    public SELF hasDefaultValue(boolean expected) {
+        return returns(expected, Column::hasDefaultValue);
+    }
+
+    public SELF isPartOfSelfReferencingRelationship(boolean expected) {
+        return returns(expected, Column::isPartOfSelfReferencingRelationship);
+    }
+
+    public SELF isSignificant(boolean expected) {
+        return returns(expected, Column::isSignificant);
+    }
+
+    public PrivilegeAssert<Column> privilege(String name) {
+        return extracting(x -> x.lookupPrivilege(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
+    }
 }

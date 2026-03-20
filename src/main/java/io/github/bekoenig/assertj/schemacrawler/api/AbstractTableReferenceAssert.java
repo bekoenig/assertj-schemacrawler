@@ -34,4 +34,22 @@ public abstract class AbstractTableReferenceAssert<
         return myself;
     }
 
+    public SELF satisfiesDependentTable(Consumer<Table> requirement) {
+        extracting(TableReference::getDependentTable).satisfies(requirement);
+        return myself;
+    }
+
+    public SELF satisfiesReferencedTable(Consumer<Table> requirement) {
+        extracting(TableReference::getReferencedTable).satisfies(requirement);
+        return myself;
+    }
+
+    public SELF isOptional(boolean expected) {
+        return returns(expected, TableReference::isOptional);
+    }
+
+    public SELF isSelfReferencing(boolean expected) {
+        return returns(expected, TableReference::isSelfReferencing);
+    }
+
 }

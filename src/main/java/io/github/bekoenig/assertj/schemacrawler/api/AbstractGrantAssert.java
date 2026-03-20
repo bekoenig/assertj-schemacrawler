@@ -1,6 +1,7 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
 import org.assertj.core.api.AbstractComparableAssert;
+import org.assertj.core.api.AbstractObjectAssert;
 import schemacrawler.schema.DatabaseObject;
 import schemacrawler.schema.Grant;
 
@@ -29,6 +30,10 @@ public class AbstractGrantAssert<
     public SELF isGrantable(boolean expected) {
         extracting(Grant::isGrantable).isEqualTo(expected);
         return myself;
+    }
+
+    public AbstractObjectAssert<?, ?> parent() {
+        return extracting(Grant::getParent);
     }
 
 }

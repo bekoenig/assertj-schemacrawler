@@ -9,8 +9,8 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
-        extends AbstractComparableAssert<SELF, Catalog> {
+public abstract class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
+        extends AbstractNamedObjectWithAttributesAssert<SELF, Catalog> {
 
     protected AbstractCatalogAssert(Catalog actual, Class<?> selfType) {
         super(actual, selfType);
@@ -67,6 +67,14 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
         isNotNull();
         return new ListableNamedObjectAssert<>(
                 actual.getRoutines(getSchema(schemaName)),
+                SchemaCrawlerAssertions::assertThat);
+    }
+
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Routine>, Routine, RoutineAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<Routine>, Routine, RoutineAssert> routines(String schemaName, String routineName) {
+        isNotNull();
+        return new ListableNamedObjectAssert<>(
+                actual.getRoutines(getSchema(schemaName), routineName),
                 SchemaCrawlerAssertions::assertThat);
     }
 
@@ -161,6 +169,11 @@ public class AbstractCatalogAssert<SELF extends AbstractCatalogAssert<SELF>>
 
     public ColumnDataTypeAssert systemColumnDataType(String name) {
         return extracting(x -> x.lookupSystemColumnDataType(name).orElse(null),
+                SchemaCrawlerAssertions::assertThat);
+    }
+
+    public RoutineAssert routine(String schemaName, String name) {
+        return extracting(x -> x.lookupRoutine(getSchema(schemaName), name).orElse(null),
                 SchemaCrawlerAssertions::assertThat);
     }
 

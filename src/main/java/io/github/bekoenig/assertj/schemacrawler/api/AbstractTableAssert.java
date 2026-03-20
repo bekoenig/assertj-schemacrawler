@@ -1,7 +1,11 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
+import org.assertj.core.api.AbstractCollectionAssert;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.api.ObjectAssert;
 import schemacrawler.schema.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -97,6 +101,38 @@ public abstract class AbstractTableAssert<
         return new ListableNamedObjectAssert<>(
                 actual.getRelatedTables(tableRelationshipType),
                 SchemaCrawlerAssertions::assertThat);
+    }
+
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Table>, Table, TableAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<Table>, Table, TableAssert> dependentTables() {
+        isNotNull();
+        return new ListableNamedObjectAssert<>(
+                actual.getDependentTables(),
+                SchemaCrawlerAssertions::assertThat);
+    }
+
+    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Table>, Table, TableAssert>>
+    ListableNamedObjectAssert<MY_SELF, List<Table>, Table, TableAssert> referencedTables() {
+        isNotNull();
+        return new ListableNamedObjectAssert<>(
+                actual.getReferencedTables(),
+                SchemaCrawlerAssertions::assertThat);
+    }
+
+    public AbstractCollectionAssert<?, Collection<? extends DatabaseObject>, DatabaseObject, ObjectAssert<DatabaseObject>> referencedObjects() {
+        return extracting(Table::getReferencedObjects, Assertions::assertThat);
+    }
+
+    public AbstractCollectionAssert<?, Collection<? extends DatabaseObject>, DatabaseObject, ObjectAssert<DatabaseObject>> usedByObjects() {
+        return extracting(Table::getUsedByObjects, Assertions::assertThat);
+    }
+
+    public AbstractCollectionAssert<?, Collection<? extends WeakAssociation>, WeakAssociation, ObjectAssert<WeakAssociation>> weakAssociations() {
+        return extracting(Table::getWeakAssociations, Assertions::assertThat);
+    }
+
+    public SELF isSelfReferencing(boolean expected) {
+        return returns(expected, Table::isSelfReferencing);
     }
 
     public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<TableConstraint>, TableConstraint, TableConstraintAssert>>

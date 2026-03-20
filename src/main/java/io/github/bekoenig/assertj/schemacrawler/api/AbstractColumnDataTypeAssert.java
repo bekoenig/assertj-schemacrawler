@@ -116,4 +116,9 @@ public abstract class AbstractColumnDataTypeAssert<SELF extends AbstractColumnDa
         return returns(expected, ColumnDataType::isUnsigned);
     }
 
+    public SELF matchesStandardTypeName(Predicate<String> predicate) {
+        extracting(ColumnDataType::getStandardTypeName).matches(predicate);
+        return myself;
+    }
+
 }

@@ -1,7 +1,11 @@
 package io.github.bekoenig.assertj.schemacrawler.api;
 
+import org.assertj.core.api.AbstractCollectionAssert;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.api.ObjectAssert;
 import schemacrawler.schema.*;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -40,6 +44,10 @@ public class AbstractTriggerAssert<SELF extends AbstractTriggerAssert<SELF>>
     public SELF matchesEventManipulationType(Predicate<Set<EventManipulationType>> predicate) {
         extracting(Trigger::getEventManipulationTypes).matches(predicate);
         return myself;
+    }
+
+    public AbstractCollectionAssert<?, Collection<? extends EventManipulationType>, EventManipulationType, ObjectAssert<EventManipulationType>> eventManipulationTypes() {
+        return extracting(Trigger::getEventManipulationTypes, Assertions::assertThat);
     }
 
 }

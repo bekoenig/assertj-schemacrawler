@@ -25,4 +25,16 @@ public abstract class AbstractTableConstraintColumnAssert<
         return myself;
     }
 
+    public SELF hasDefaultValue(boolean expected) {
+        return returns(expected, TableConstraintColumn::hasDefaultValue);
+    }
+
+    public SELF isPartOfSelfReferencingRelationship(boolean expected) {
+        return returns(expected, TableConstraintColumn::isPartOfSelfReferencingRelationship);
+    }
+
+    public SELF isSignificant(boolean expected) {
+        return returns(expected, TableConstraintColumn::isSignificant);
+    }
+
 }

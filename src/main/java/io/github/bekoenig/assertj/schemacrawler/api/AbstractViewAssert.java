@@ -32,7 +32,7 @@ public abstract class AbstractViewAssert<SELF extends AbstractViewAssert<SELF>>
         return returns(expected, View::isUpdatable);
     }
 
-    public TableAssert table(String schemaName, String tableName) {
+    public TableAssert table(String tableName) {
         return extracting(x -> x.lookupTable(x.getSchema(), tableName).orElse(null),
                 SchemaCrawlerAssertions::assertThat);
     }
