@@ -19,14 +19,6 @@ public abstract class AbstractTableAssert<
         super(actual, selfType);
     }
 
-    public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<PrimaryKey>, PrimaryKey, PrimaryKeyAssert>>
-    ListableNamedObjectAssert<MY_SELF, List<PrimaryKey>, PrimaryKey, PrimaryKeyAssert> alternateKeys() {
-        isNotNull();
-        return new ListableNamedObjectAssert<>(
-                actual.getAlternateKeys(),
-                SchemaCrawlerAssertions::assertThat);
-    }
-
     public <MY_SELF extends ListableNamedObjectAssert<MY_SELF, List<Column>, Column, ColumnAssert>>
     ListableNamedObjectAssert<MY_SELF, List<Column>, Column, ColumnAssert> columns() {
         isNotNull();
@@ -125,10 +117,6 @@ public abstract class AbstractTableAssert<
 
     public AbstractCollectionAssert<?, Collection<? extends DatabaseObject>, DatabaseObject, ObjectAssert<DatabaseObject>> usedByObjects() {
         return extracting(Table::getUsedByObjects, Assertions::assertThat);
-    }
-
-    public AbstractCollectionAssert<?, Collection<? extends WeakAssociation>, WeakAssociation, ObjectAssert<WeakAssociation>> weakAssociations() {
-        return extracting(Table::getWeakAssociations, Assertions::assertThat);
     }
 
     public SELF isSelfReferencing(boolean expected) {
