@@ -87,8 +87,14 @@ public abstract class AbstractColumnDataTypeAssert<SELF extends AbstractColumnDa
         return myself;
     }
 
+    @Deprecated
     public SELF matchesTypeMappedClass(Predicate<Class<?>> predicate) {
         extracting(ColumnDataType::getTypeMappedClass).matches(predicate);
+        return myself;
+    }
+
+    public SELF matchesTypeMappedClassName(Predicate<String> predicate) {
+        extracting(ColumnDataType::getTypeMappedClassName).matches(predicate);
         return myself;
     }
 

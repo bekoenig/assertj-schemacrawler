@@ -7,6 +7,7 @@
     - High test coverage.
     - Adherence to project code formatting.
     - Documentation in English.
+    - Methods marked as deprecated in SchemaCrawler must also be marked as deprecated in this library.
 
 ## Project Structure
 - **Language:** Java
