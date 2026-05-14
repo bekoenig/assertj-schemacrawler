@@ -68,7 +68,7 @@ public abstract class AbstractKeyColumnAssert<
     }
 
     public SELF isColumnDataTypeKnown(boolean expected) {
-        return returns(expected, BaseColumn::getColumnDataType);
+        return returns(expected, BaseColumn::isColumnDataTypeKnown);
     }
 
     public SELF isGenerated(boolean expected) {

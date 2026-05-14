@@ -72,4 +72,17 @@ class ColumnAssertTest {
         columnAssert.parent();
     }
 
+    @Test
+    void isColumnDataTypeKnown() {
+        // GIVEN
+        Column column = mock(Column.class);
+        when(column.isColumnDataTypeKnown()).thenReturn(true);
+
+        // WHEN
+        ColumnAssert columnAssert = SchemaCrawlerAssertions.assertThat(column);
+
+        // THEN
+        columnAssert.isColumnDataTypeKnown(true);
+    }
+
 }
