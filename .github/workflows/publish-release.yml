@@ -21,9 +21,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.PAT }}
+        fetch-depth: 0
     - name: Set up JDK
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -51,14 +51,7 @@ jobs:
         release:prepare \
         release:perform \
         -P publish
-    - name: Push changes
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.PAT }}
-        branch: ${{ github.ref }}
-    - name: Push tags
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        branch: ${{ github.ref }}
-        github_token: ${{ secrets.PAT }}
-        tags: true
+    - name: Push changes and tags
+      run: |
+        git push
+        git push --tags
